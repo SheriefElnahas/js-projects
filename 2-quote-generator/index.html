@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quote GEneraotr</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quote Generator</title>
 
-  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/75016b0d3c.js" crossorigin="anonymous"></script>
 
-  <script src="app.js" defer></script>
-</head>
-<body>
-  <main>
-    <div class="card">
-      <h1 class="card__heading">Quote of the Day</h1>
-        <blockquote class="card__quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam, alias!</blockquote>
-        <p>-- Quote Author</p>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <h1 class="card__heading">Quote of the Day</h1>
+
+        <blockquote class="card__quote"><i class="fa-solid fa-quote-left" aria-hidden="true"></i>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Molestias, animi.<i class="fa-solid fa-quote-right" aria-hidden="true"></i></blockquote>
+
+        <p class="quote__author">&ndash;
+          Quote Author</p>
         <div class="card__actions">
           <div class="card__buttons">
-            <button class="btn btn-voice" >Icon</button>
-            <button class="btn btn-copy" >Icon</button>
-            <button class="btn btn-tweet" ></button>
+            <button class="btn btn-voice">Icon</button>
+            <button class="btn btn-copy">Icon</button>
+            <button class="btn btn-tweet"></button>
           </div>
           <button class="quote__generator">New Quote</button>
         </div>
-    </div>
-  </main>
-</body>
+      </div>
+    </main>
+  </body>
 </html>

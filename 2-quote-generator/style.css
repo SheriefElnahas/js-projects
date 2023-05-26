@@ -1,8 +1,64 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: 'Roboto', sans-serif;
-  line-height:1.5;
-  background:#222;
-  color:#fff;
+  line-height: 1.5;
+  background: #6572eb;
+  color: #333;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  background: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  border-left: 20px solid #31D695;
+
+}
+
+
+
+.card__heading {
+  text-align: center;
+  font-size: clamp(1.5rem, 0.75rem + 2vw, 2.5rem);
+  margin: 1rem 0;
+}
+
+
+.card__quote {
+  position: relative;
+  width:80%;
+  margin:2rem auto;
+  text-align: center
+  ;
+}
+
+.fa-solid {
+  font-size: 1.4rem;
+  margin: 0.5rem;
+  position: absolute;
+  color:#31D695;
+}
+
+.fa-quote-left {
+  top:-30px;
+  left:-30px;
+}
+
+.fa-quote-right {
+  right:-20px;
+}
+
+.quote__author {
+  text-align: right;
+  font-style: italic;
+  font-weight: 500;
 }
