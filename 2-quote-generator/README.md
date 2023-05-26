@@ -14,7 +14,7 @@ HTML , CSS , BEM , Responsive Design , JS , API , Axios
 
 
 ## Website URL
-You can check the live website at this URL https://sherief-elnahas-fem-stats-previewcard.netlify.app/
+You can check the live website at this URL https://sherief-elnahas-js-quote-generator.netlify.app/
 
 
 ## Credits
