@@ -38,6 +38,9 @@ async function getData() {
 const quoteContainer = document.querySelector('.quote__container');
 
 generateQuoteButton.addEventListener('click', () => {
+  generateQuoteButton.disabled = true;
+  generateQuoteButton.innerHTML = 'Loading!'
+
   getData().then((res) => {
     const { content, author } = res.data;
     const genereatedHTMLQuote = `
@@ -45,5 +48,8 @@ generateQuoteButton.addEventListener('click', () => {
       <p class="quote__author">&ndash; ${author}</p>
     `;
     quoteContainer.innerHTML = genereatedHTMLQuote;
+    generateQuoteButton.disabled = false;
+    generateQuoteButton.innerHTML = 'New Quote'
   });
+
 });

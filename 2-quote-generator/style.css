@@ -30,7 +30,7 @@ body {
 .card__heading {
   text-align: center;
   font-size: clamp(1.5rem, 0.75rem + 2vw, 2.5rem);
-  margin: 1rem 0;
+  margin: 1rem 0 2rem;
 }
 
 .card__quote {
@@ -137,6 +137,7 @@ body {
   border-radius: 15px;
   border: none;
   font-weight: bold;
+  margin-left:10px;
 }
 
 .btn--quote:hover {
