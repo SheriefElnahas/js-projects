@@ -87,6 +87,7 @@ body {
 }
 .btn--icon:active {
   transform: translateY(3px);
+  border: 2px solid #6572eb;
 }
 
 .btn--quote {
