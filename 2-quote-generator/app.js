@@ -2,9 +2,16 @@ const quoteElement = document.querySelector('.card__quote');
 const speakButton = document.querySelector('.btn--speak');
 const generateQuoteButton = document.querySelector('.btn--quote');
 
+let generatedQuote;
+
 speakButton.addEventListener('click', () => {
-  const utterance = new SpeechSynthesisUtterance(quoteElement.textContent);
+  utterance = new SpeechSynthesisUtterance(generatedQuote || quoteElement.textContent);
+
   speechSynthesis.speak(utterance);
+
+  if (speechSynthesis.pause) {
+    speechSynthesis.resume(utterance);
+  }
 
   generateQuoteButton.disabled = true;
 
@@ -12,6 +19,17 @@ speakButton.addEventListener('click', () => {
     generateQuoteButton.disabled = false;
   });
 });
+
+const pauseSpeakButton = document.querySelector('.btn--pause');
+
+function pauseSpeech() {
+  if (speechSynthesis.speaking) {
+    speechSynthesis.pause();
+    generateQuoteButton.disabled = false;
+  }
+}
+
+pauseSpeakButton.addEventListener('click', pauseSpeech);
 
 const copyButton = document.querySelector('.btn--copy');
 
@@ -39,17 +57,21 @@ const quoteContainer = document.querySelector('.quote__container');
 
 generateQuoteButton.addEventListener('click', () => {
   generateQuoteButton.disabled = true;
-  generateQuoteButton.innerHTML = 'Loading!'
+  generateQuoteButton.innerHTML = 'Loading!';
+
+  speechSynthesis.cancel();
 
   getData().then((res) => {
     const { content, author } = res.data;
+    generatedQuote = content;
     const genereatedHTMLQuote = `
       <blockquote class="card__quote"><i class="fa-solid fa-quote-left" aria-hidden="true"></i>${content}<i class="fa-solid fa-quote-right" aria-hidden="true"></i></blockquote>
       <p class="quote__author">&ndash; ${author}</p>
     `;
+    utterance = new SpeechSynthesisUtterance(content);
+
     quoteContainer.innerHTML = genereatedHTMLQuote;
     generateQuoteButton.disabled = false;
-    generateQuoteButton.innerHTML = 'New Quote'
+    generateQuoteButton.innerHTML = 'New Quote';
   });
-
 });
