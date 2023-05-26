@@ -21,7 +21,10 @@ body {
   border-radius: 10px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
   border-left: 20px solid #31d695;
-  margin:0 2rem;
+  margin:0 1rem;
+  max-width:650px;
+
+
 }
 
 .card__heading {
@@ -32,9 +35,10 @@ body {
 
 .card__quote {
   position: relative;
-  width: 80%;
-  margin: 2rem auto;
+  width: 90%;
+  margin: 1rem auto;
   text-align: center;
+
 }
 
 .fa-quote-left,
@@ -51,7 +55,8 @@ body {
 }
 
 .fa-quote-right {
-  right: -20px;
+  right: -25px;
+  bottom:-20px;
 }
 
 .quote__author {
