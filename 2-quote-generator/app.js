@@ -1,3 +1,8 @@
+// Cancel The speech if the user refreshed the page
+window.addEventListener('load', () => {
+  speechSynthesis.cancel();
+})
+
 const generateQuoteButton = document.querySelector('.btn--quote');
 
 // ************************************************
@@ -5,8 +10,9 @@ const generateQuoteButton = document.querySelector('.btn--quote');
 // *************************************************
 document.querySelector('.btn--speak').addEventListener('click', () => {
   // 1- Extract the quote from HTML
-  const quote = document.querySelector('.card__quote').textContent;
+  let quote = document.querySelector('.card__quote').textContent;
 
+  quote+= `Said By, ${document.querySelector('.quote__author').textContent}`
   // 2-Create an utterance object from the generate quote
   let utterance = new SpeechSynthesisUtterance(quote);
 
@@ -63,7 +69,9 @@ copyButton.addEventListener('click', () => {
 const tweetButton = document.querySelector('.btn--tweet');
 
 tweetButton.addEventListener('click', () => {
-  tweetButton.href = `https://twitter.com/intent/tweet?text=${quoteElement.textContent}`;
+  const quote = document.querySelector('.card__quote').textContent;
+
+  tweetButton.href = `https://twitter.com/intent/tweet?text=${quote}`;
 });
 
 // ********************************************************
@@ -97,3 +105,5 @@ generateQuoteButton.addEventListener('click', () => {
     generateQuoteButton.innerHTML = 'New Quote';
   });
 });
+
+
