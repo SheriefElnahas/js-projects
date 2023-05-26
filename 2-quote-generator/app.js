@@ -24,3 +24,10 @@ copyButton.addEventListener('click', () => {
     }, 2000);
   });
 });
+
+
+const tweetButton = document.querySelector('.btn--tweet');
+
+tweetButton.addEventListener('click', () => {
+    tweetButton.href = `https://twitter.com/intent/tweet?text=${quote.textContent}`
+})

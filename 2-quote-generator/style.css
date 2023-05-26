@@ -126,7 +126,7 @@ body {
 }
 
 .btn--quote {
-  background: hsl(234, 77%, 66%);
+  background: hsl(234, 76%, 62%);
   color: #fff;
   padding: 0.6rem 1.4rem;
   border-radius: 15px;
@@ -135,7 +135,7 @@ body {
 }
 
 .btn--quote:hover {
-  background: hsl(234, 77%, 56%);
+  background: hsl(234, 76%, 52%);
 }
 
 
