@@ -20,11 +20,8 @@ body {
   padding: 1rem 2rem;
   border-radius: 10px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
-  border-left: 20px solid #31D695;
-
+  border-left: 20px solid #31d695;
 }
-
-
 
 .card__heading {
   text-align: center;
@@ -32,33 +29,75 @@ body {
   margin: 1rem 0;
 }
 
-
 .card__quote {
   position: relative;
-  width:80%;
-  margin:2rem auto;
-  text-align: center
-  ;
+  width: 80%;
+  margin: 2rem auto;
+  text-align: center;
 }
 
-.fa-solid {
+.fa-quote-left,
+.fa-quote-right {
   font-size: 1.4rem;
   margin: 0.5rem;
   position: absolute;
-  color:#31D695;
+  color: #31d695;
 }
 
 .fa-quote-left {
-  top:-30px;
-  left:-30px;
+  top: -30px;
+  left: -30px;
 }
 
 .fa-quote-right {
-  right:-20px;
+  right: -20px;
 }
 
 .quote__author {
   text-align: right;
   font-style: italic;
   font-weight: 500;
+  padding-bottom: 1rem;
+}
+
+.card__actions {
+  border-top: 2px solid #dedede;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn {
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+.btn--icon {
+  color: #6572eb;
+  background: transparent;
+  padding: 0.8rem 1rem;
+  font-size: 0.9rem;
+  border-radius: 50%;
+  border: 2px solid #6572eb;
+  margin-right: 4px;
+}
+.btn--icon:hover {
+  color: #fff;
+  background: #6572eb;
+}
+.btn--icon:active {
+  transform: translateY(3px);
+}
+
+.btn--quote {
+  background: hsl(234, 77%, 66%);
+  color: #fff;
+  padding: 0.6rem 1.4rem;
+  border-radius: 15px;
+  border: none;
+  font-weight: bold;
+}
+
+.btn--quote:hover {
+  background: hsl(234, 77%, 56%);
 }
