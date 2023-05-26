@@ -13,6 +13,9 @@ Random Quote Genetaor that allows users to generate and view quotes from various
 HTML , CSS , BEM , Responsive Design , JS , API , Axios
 
 
+## Website URL
+You can check the live website at this URL https://sherief-elnahas-fem-stats-previewcard.netlify.app/
+
 
 ## Credits
 
