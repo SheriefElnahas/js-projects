@@ -21,6 +21,7 @@ body {
   border-radius: 10px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
   border-left: 20px solid #31d695;
+  margin:0 2rem;
 }
 
 .card__heading {
@@ -74,11 +75,13 @@ body {
 }
 .btn--icon {
   color: #6572eb;
+
   background: transparent;
   padding: 0.8rem 1rem;
   font-size: 0.9rem;
   border-radius: 50%;
   border: 2px solid #6572eb;
+
   margin-right: 4px;
 }
 .btn--icon:hover {
@@ -88,6 +91,38 @@ body {
 .btn--icon:active {
   transform: translateY(3px);
   border: 2px solid #6572eb;
+}
+
+.btn--copy {
+  position: relative;
+}
+.btn--copy::before {
+  content: 'Copied!';
+  position: absolute;
+  top:-39px;
+  left:-10px;
+  background:#6572eb;
+  color:#fff;
+  padding:0.4rem;
+  border-radius: 15px;
+  display:none;
+  font-weight: bold;
+}
+.btn--copy::after {
+  content:"";
+  position: absolute;
+  top:-16px;
+  right:20px;
+  width:10px;
+  height:10px;
+  background:#6572eb;
+  transform:rotate(45deg);
+  display:none;
+}
+
+.copied.btn--copy::before,
+.copied.btn--copy::after {
+  display:block;
 }
 
 .btn--quote {
@@ -101,4 +136,10 @@ body {
 
 .btn--quote:hover {
   background: hsl(234, 77%, 56%);
+}
+
+
+.btn--quote:disabled {
+  background:gray;
+  cursor:not-allowed;
 }
