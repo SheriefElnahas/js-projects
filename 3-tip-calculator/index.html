@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Calculate your daily tip with our easy-to-use Tip Calculator app." />
     <title>Tip Calculator</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -62,10 +63,10 @@
       <fieldset class="calculator__fieldset filedset--round">
         <legend class="fieldset__legend">Ronding Amount</legend>
         <div class="box">
-          <input class="Switcher__checkbox sr-only" id="io" type="checkbox" checked="checked" />
-          <label class="Switcher" for="io">
-            <div class="Switcher__trigger" data-value="UP"></div>
-            <div class="Switcher__trigger" data-value="DOWN"></div>
+          <input class="Switcher__checkbox sr-only" id="io" type="checkbox" checked="checked" role="switch" aria-checked="true" aria-labelledby="io-label" tabindex="0" />
+          <label class="Switcher" for="io" id="io-label">
+            <span class="Switcher__trigger" data-value="UP"></span>
+            <span class="Switcher__trigger" data-value="DOWN"></span>
           </label>
         </div>
       </fieldset>

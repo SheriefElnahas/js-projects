@@ -10,10 +10,6 @@
   box-sizing: border-box;
 }
 
-/* html {
-  font-size:62.5%;
-} */
-
 body {
   background: #7171ce;
   color: #fff;
@@ -47,18 +43,18 @@ body {
 
 .calculator__heading {
   text-align: center;
-  padding: 1rem 0;
-  margin-top: 2rem;
-  font-size: 3rem;
+
+  font-size: 2rem;
+  padding-top: 1rem;
 }
 
 .calculator__fieldset {
   background: #fff;
-  color: #827676;
+  color: #786d6d;
   font-weight: bold;
   padding: 1.5rem 1.5rem 0.3rem;
   border: none;
-  margin: 2rem;
+  margin: 1rem 2rem;
   border-radius: 10px;
 
   font-size: 0.8rem;
@@ -145,6 +141,8 @@ body {
   left: 112px;
   font-size: 1rem;
 }
+
+
 .Switcher {
   position: relative;
   display: flex;
@@ -175,10 +173,7 @@ body {
   left: 0;
   bottom: 0;
   width: 200%;
-
-  /* background: #000; */
   background: #5e5eed;
-
   transform: translateX(-75%);
   /* transition: transform 0.2s ease-in-out; */
 }
@@ -190,6 +185,7 @@ body {
   position: relative;
   z-index: 1;
   padding: 0.5em 4em;
+
 }
 .Switcher__trigger::after {
   content: attr(data-value);
