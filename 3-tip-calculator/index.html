@@ -35,7 +35,7 @@
         <div class="field__row">
           <div class="flex__between">
             <label for="tip">Tip %</label>
-            <output class="color--primary">15%</output>
+            <output id="tip-output" class="color--primary">15%</output>
           </div>
 
           <input type="range" class="input--range" id="tip" min="1" max="100" />
@@ -43,11 +43,11 @@
 
         <div class="field__row">
           <div class="flex__between">
-            <label for="split">Split</label>
-            <output class="color--primary">2</output>
+            <label  for="split">Split</label>
+            <output id="split-output" class="color--primary">6</output>
           </div>
 
-          <input type="range" class="input--range" id="split" min="2" max="30" />
+          <input type="range" class="input--range" id="split" min="2" max="10" />
         </div>
         <div class="flex__between row--person">
           <p>Split Per Person</p>
@@ -71,5 +71,7 @@
         </div>
       </fieldset>
     </main>
+
+    <script src="app.js"></script>
   </body>
 </html>
