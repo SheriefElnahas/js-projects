@@ -22,12 +22,12 @@
         </div>
         <div class="field__row flex__between">
           <p>Tip</p>
-          <p  class="tip--value color--primary">$<span id="calculated-tip">0.00</span></p>
+          <p class="tip--value color--primary">$<span id="calculated-tip">0.00</span></p>
         </div>
 
         <div class="row--highlight flex__between">
           <p>Total</p>
-          <p class="highlight--value " >$<span id="total">00.00</span></p>
+          <p class="highlight--value">$<span id="total">00.00</span></p>
         </div>
       </fieldset>
 
@@ -35,28 +35,28 @@
         <div class="field__row">
           <div class="flex__between">
             <label for="tip">Tip %</label>
-            <output id="tip-output" class="color--primary">15%</output>
+            <output id="tip-output" class="color--primary">10%</output>
           </div>
 
-          <input type="range" class="input--range" id="tip" min="1" max="100" />
+          <input type="range" class="input--range" id="tip" min="1" max="100" value="10" />
         </div>
 
         <div class="field__row">
           <div class="flex__between">
             <label for="split">Split</label>
-            <output id="split-output" class="color--primary">6</output>
+            <output id="split-output" class="color--primary">2</output>
           </div>
 
-          <input type="range" class="input--range" id="split" min="2" max="10" />
+          <input type="range" class="input--range" id="split" min="2" max="10" value="2" />
         </div>
-        <div class="flex__between row--person">
+        <!-- <div class="flex__between row--person">
           <p>Split Per Person</p>
           <p class="color--primary">$50.50</p>
-        </div>
+        </div> -->
 
         <div class="row--highlight flex__between">
-          <p>Split Total</p>
-          <p class="highlight--value">$50.50</p>
+          <p>Split Per Person</p>
+          <p class="highlight--value">$<span id="split-per-person">00.00</span></p>
         </div>
       </fieldset>
 
