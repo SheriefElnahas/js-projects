@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tip Calculator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tip Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="calculator">
+      <h1 class="calculator__heading">Tip Calculator</h1>
+      <fieldset class="calculator__fieldset">
+        <div class="field__row">
+          <label for="bill" class="field__label label--bill"> Bill</label>
+          <div class="input__wrapper">
+            <input type="text" class="field__input input--bill" id="bill" placeholder="0.00" />
+            <span class="input--dollar">$</span>
+          </div>
+        </div>
+        <div class="field__row">
+          <p class="field__tip tip--text">Tip</p>
+          <p class="field__tip tip--value">$50</p>
+        </div>
+
+        <div class="field__row row--total">
+          <p class="field__total total--text">Total</p>
+          <p class="field__total total--value">$50.50</p>
+        </div>
+      </fieldset>
+    </main>
+  </body>
 </html>

@@ -1,18 +1,93 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 * {
-  padding:0;
-  margin:0;
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
-html {
+/* html {
   font-size:62.5%;
-}
+} */
 
 body {
-  background:#333;
-  color:#fff;
+  background: #7171ce;
+  color: #fff;
   line-height: 1.5;
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calculator {
+  width: 500px;
+  background: #272639;
+  border-radius: 15px;
+}
+
+.calculator__heading {
+  text-align: center;
+  padding: 1rem 0;
+  margin-top: 2rem;
+  font-size: 3rem;
+}
+
+.calculator__fieldset {
+  background: #fff;
+  color: #333;
+  font-weight: bold;
+  padding: 1.5rem 1.5rem 0.3rem;
+  border: none;
+  margin: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 0px 0px 8px #4d6fe0;
+}
+
+.field__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.input--bill {
+  background: #4d6fe0;
+  border-radius: 15px;
+  padding: 0.3rem 1.5rem;
+  margin-left: auto;
+  border: none;
+  color: #fff;
+  font-family: inherit;
+  font-weight: bold;
+  width: 50%;
+}
+
+.input__wrapper {
+  position: relative;
+  margin-right: -105px;
+}
+
+.input--bill:focus {
+  outline: 2px solid #fff;
+}
+.input--bill::placeholder {
+  color: #fff;
+}
+.input--dollar {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  color: #fff;
+}
+
+.row--total {
+  border-top: 1px solid black;
+  padding-top: 1rem;
+}
+.total--value {
+  font-size: 2rem;
+  color: #4d6fe0;
 }
