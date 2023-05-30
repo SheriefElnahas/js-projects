@@ -2,6 +2,7 @@
 
 :root {
   --primary-color: #ed5e5e;
+  --primary-orange:#ffc762;
 }
 * {
   padding: 0;
@@ -9,6 +10,9 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
 body {
   min-height: 100vh;
   background: #f64445;
@@ -37,9 +41,11 @@ img {
   height: auto;
 }
 
-html {
-  font-size: 62.5%;
+.hide {
+  display:none;
 }
+
+
 /* Panel */
 .panel {
   width: 1000px;
@@ -94,9 +100,11 @@ html {
 /* Panel Hero */
 .panel__hero {
   display: flex;
+  justify-content: space-around;
 }
 .hero__content {
-  padding: 0 2rem;
+  padding: 0 2rem 0 1rem;
+
 }
 .hero__name {
   text-transform: uppercase;
@@ -136,4 +144,34 @@ html {
   border-bottom: 5px solid var(--primary-color);
   position: relative;
   z-index: 2;
+}
+
+
+.powerstate {
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  margin:2.5rem 0;
+}
+.powerstats__content {
+  display:flex;
+  align-items: center;
+
+}
+.powerstats__icon {
+  margin-right:2rem;
+  color:var(--primary-color);
+}
+
+.powerstats__description {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 400;
+  font-size:1.4rem;
+  margin-top:1px;
+}
+
+.powerstats__info {
+  color:var(--primary-orange);
+  font-weight: bold;
 }
