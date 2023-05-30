@@ -10,6 +10,7 @@ const billInput = document.querySelector('#bill');
 tipRangeInput.addEventListener('input', (e) => {
   userTipPercent.textContent = e.target.value + '%';
 
+  // Only calculate if we have positive bill value
   if (billInput.value > 0) {
     calculateTotal();
   }
@@ -18,6 +19,7 @@ tipRangeInput.addEventListener('input', (e) => {
 splitRangeInput.addEventListener('input', (e) => {
   splitNumberElement.textContent = e.target.value;
 
+  // Only calculate if we have positive bill value
   if (billInput.value > 0) {
     calculateTotal();
   }
@@ -27,15 +29,7 @@ const calculatedTipElement = document.querySelector('#calculated-tip');
 const totalElement = document.querySelector('#total');
 
 billInput.addEventListener('input', (e) => {
-  // const tipPercentValue = parseInt(userTipPercent.textContent) / 100;
-  // const billAmount = Number(e.target.value);
-  // const calculatedTipValue = billAmount * tipPercentValue.toFixed(2);
-
-  // const totalValue = billAmount + calculatedTipValue;
-
-  // calculatedTipElement.textContent = calculatedTipValue;
-  // totalElement.textContent = totalValue;
-
+  // Only calculate if we have positive bill value
   if (e.target.value > 0) {
     calculateTotal();
   }
@@ -52,7 +46,15 @@ function calculateTotal() {
   const calculatedTipValue = Number((billAmount * tipPercentValue).toFixed(2));
 
   // 4- calculate the total
-  const totalBill = (billAmount + calculatedTipValue).toFixed(2);
+  let totalBill = (billAmount + calculatedTipValue).toFixed(2);
+
+  // UP = false
+  // DOwn = true
+  if (roundValue.checked) {
+    totalBill = Math.floor(totalBill);
+  } else {
+    totalBill = Math.ceil(totalBill);
+  }
 
   // 5- get the split per people number
   const splitNumber = Number(splitRangeInput.value);
@@ -70,3 +72,14 @@ function updateUi(calculatedTip, totalBill, splitNumber) {
   // 3-Update Split Per Person Element
   splitPerPersonElement.textContent = (totalBill / splitNumber).toFixed(2);
 }
+
+const roundValue = document.querySelector('.Switcher__checkbox');
+
+roundValue.addEventListener('change', (e) => {
+  // UP = false
+  // DOwn = true
+
+  if (billInput.value > 0) {
+    calculateTotal();
+  }
+});

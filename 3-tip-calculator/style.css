@@ -39,6 +39,7 @@ body {
   width: 400px;
   background: #272639;
   border-radius: 15px;
+  padding-bottom:1rem;
 }
 
 .calculator__heading {
@@ -138,7 +139,7 @@ body {
   text-align: center;
   position: absolute;
   top: 14px;
-  left: 112px;
+  left: 123px;
   font-size: 1rem;
 }
 
