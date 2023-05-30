@@ -4,18 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>Superhero API App</title>
+    <script src="https://kit.fontawesome.com/75016b0d3c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
     <main>
       <section class="panel">
-        <h1 class="panel__heading">SuperHero</h1>
-        <input type="text" class="panel__input" place="Search your superhero here ..." />
+        <header class="panel__header">
+          <h1 class="panel__heading">Super<span class="highlight">Hero</span></h1>
+          <input type="text" class="panel__input" placeholder="Search your superhero here ..." />
+          <i class="fa-solid fa-magnifying-glass icon__search"></i>
+        </header>
 
         <div class="panel__hero">
-          <img src="" alt="" class="hero__img" />
+          <img src="219760.jpg" alt="" class="hero__img" />
           <div class="hero__content">
             <h2 class="her__name">Batman</h2>
             <div class="hero__tabs">
