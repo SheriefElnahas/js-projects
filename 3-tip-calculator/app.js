@@ -5,6 +5,8 @@ const splitNumberElement = document.querySelector('#split-output');
 const splitRangeInput = document.querySelector('#split');
 const splitPerPersonElement = document.querySelector('#split-per-person');
 
+const roundValue = document.querySelector('.Switcher__checkbox');
+
 const billInput = document.querySelector('#bill');
 
 tipRangeInput.addEventListener('input', (e) => {
@@ -73,7 +75,7 @@ function updateUi(calculatedTip, totalBill, splitNumber) {
   splitPerPersonElement.textContent = (totalBill / splitNumber).toFixed(2);
 }
 
-const roundValue = document.querySelector('.Switcher__checkbox');
+
 
 roundValue.addEventListener('change', (e) => {
   // UP = false
