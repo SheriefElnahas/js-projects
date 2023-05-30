@@ -1,5 +1,5 @@
 const buttons = document.querySelectorAll('.hero__tab');
-
+const articles = document.querySelectorAll('article');
 
 buttons.forEach((button) => {
   button.addEventListener('click', () => {
@@ -10,5 +10,23 @@ buttons.forEach((button) => {
 
     // Add the active class to the clicked button
     button.classList.add('active');
-  })
-})
+  });
+});
+
+const powerStatesButton = document.getElementById('powerstates-bttuon');
+const powerStatesArticle = document.getElementById('powerstates-article');
+
+powerStatesButton.addEventListener('click', () => {
+  powerStatesArticle.classList.remove('hide');
+});
+
+
+for (let i = 0; i < buttons.length; i++) {
+  buttons[i].addEventListener('click', () => {
+    articles.forEach((article) => {
+      article.classList.remove('hide');
+    });
+
+    articles[i].classList.add('hide');
+  });
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
   --primary-color: #ed5e5e;
@@ -138,6 +138,7 @@ img {
   background: transparent;
   color: #fff;
   padding-bottom: 1.5rem;
+  font-weight: 500;
 }
 
 .active {
@@ -146,6 +147,8 @@ img {
   z-index: 2;
 }
 
+
+/* Power stats */
 
 .powerstate {
   display:flex;
@@ -174,4 +177,19 @@ img {
 .powerstats__info {
   color:var(--primary-orange);
   font-weight: bold;
+}
+
+/* Biography */
+.biography__row {
+  display:flex;
+  margin:3rem 0;
+}
+.row__heading {
+  color:#898989;
+  margin-right:1.5rem;
+  font-weight: 500;
+}
+
+.row__details {
+  font-weight: 400;
 }
