@@ -1,77 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Calculate your daily tip with our easy-to-use Tip Calculator app." />
-    <title>Tip Calculator</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body class="flex__center">
-    <main class="calculator">
-      <h1 class="calculator__heading">Tip Calculator</h1>
 
-      <fieldset class="calculator__fieldset">
-        <div class="field__row flex__between">
-          <label for="bill"> Bill</label>
-          <div class="wrapper--bill">
-            <input type="text" class="input--bill" id="bill" placeholder="0.00" />
-            <span class="input--dollar">$</span>
-          </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Calculate your daily tip with our easy-to-use Tip Calculator app." />
+  <title>Tip Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="flex__center">
+  <main class="calculator">
+    <h1 class="calculator__heading">Tip Calculator</h1>
+
+    <fieldset class="calculator__fieldset">
+      <div class="field__row flex__between">
+        <label for="bill"> Bill</label>
+        <div class="wrapper--bill">
+          <input type="text" class="input--bill" id="bill" placeholder="0.00" />
+          <span class="input--dollar">$</span>
         </div>
-        <div class="field__row flex__between">
-          <p>Tip</p>
-          <p class="tip--value color--primary">$<span id="calculated-tip">0.00</span></p>
+      </div>
+      <div class="field__row flex__between">
+        <p>Tip</p>
+        <p class="tip--value color--primary">$<span id="calculated-tip">0.00</span></p>
+      </div>
+
+      <div class="row--highlight flex__between">
+        <p>Total</p>
+        <p class="highlight--value">$<span id="total">00.00</span></p>
+      </div>
+    </fieldset>
+
+    <fieldset class="calculator__fieldset">
+      <div class="field__row">
+        <div class="flex__between">
+          <label for="tip">Tip %</label>
+          <output id="tip-output" class="color--primary">10%</output>
         </div>
 
-        <div class="row--highlight flex__between">
-          <p>Total</p>
-          <p class="highlight--value">$<span id="total">00.00</span></p>
-        </div>
-      </fieldset>
+        <input type="range" class="input--range" id="tip" min="1" max="100" value="10" />
+      </div>
 
-      <fieldset class="calculator__fieldset">
-        <div class="field__row">
-          <div class="flex__between">
-            <label for="tip">Tip %</label>
-            <output id="tip-output" class="color--primary">10%</output>
-          </div>
-
-          <input type="range" class="input--range" id="tip" min="1" max="100" value="10" />
+      <div class="field__row">
+        <div class="flex__between">
+          <label for="split">Split</label>
+          <output id="split-output" class="color--primary">2</output>
         </div>
 
-        <div class="field__row">
-          <div class="flex__between">
-            <label for="split">Split</label>
-            <output id="split-output" class="color--primary">2</output>
-          </div>
+        <input type="range" class="input--range" id="split" min="2" max="30" value="2" />
+      </div>
 
-          <input type="range" class="input--range" id="split" min="2" max="30" value="2" />
-        </div>
-        <!-- <div class="flex__between row--person">
-          <p>Split Per Person</p>
-          <p class="color--primary">$50.50</p>
-        </div> -->
 
-        <div class="row--highlight flex__between">
-          <p>Split Per Person</p>
-          <p class="highlight--value">$<span id="split-per-person">00.00</span></p>
-        </div>
-      </fieldset>
+      <div class="row--highlight flex__between">
+        <p>Split Per Person</p>
+        <p class="highlight--value">$<span id="split-per-person">00.00</span></p>
+      </div>
+    </fieldset>
 
-      <fieldset class="calculator__fieldset filedset--round">
-        <legend class="fieldset__legend">Round Total</legend>
-        <div class="box">
-          <input class="Switcher__checkbox sr-only" id="io" type="checkbox" checked="checked" role="switch" aria-checked="true" aria-labelledby="io-label" tabindex="0" />
-          <label class="Switcher" for="io" id="io-label">
-            <span class="Switcher__trigger" data-value="UP"></span>
-            <span class="Switcher__trigger" data-value="DOWN"></span>
-          </label>
-        </div>
-      </fieldset>
-    </main>
+    <fieldset class="calculator__fieldset filedset--round">
+      <legend class="fieldset__legend">Round Total</legend>
+      <div class="box">
+        <input class="Switcher__checkbox sr-only" id="io" type="checkbox" checked="checked" role="switch"
+          aria-labelledby="io-label" tabindex="0" />
+        <label class="Switcher" for="io" id="io-label">
+          <span class="Switcher__trigger" data-value="UP"></span>
+          <span class="Switcher__trigger" data-value="DOWN"></span>
+        </label>
+      </div>
+    </fieldset>
+  </main>
 
-    <script src="app.js"></script>
-  </body>
+  <script src="app.js"></script>
+</body>
+
 </html>
