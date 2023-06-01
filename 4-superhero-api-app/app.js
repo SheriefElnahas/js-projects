@@ -29,3 +29,31 @@ for (let i = 0; i < buttons.length; i++) {
     articles[i].classList.remove('hide');
   });
 }
+
+
+// https://www.superheroapi.com/api.php/727054372039115/search/
+
+// Helper Function 
+function debounce(func, delay = 250) {
+  let timerId;
+  return (...args) => {
+    clearTimeout(timerId);
+    timerId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
+const searchInputElement = document.querySelector('#search-input');
+
+searchInputElement.addEventListener('input', debounce((e) => {
+  console.log(e.target.value);
+
+  axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${e.target.value}`).then((res) => {
+  console.log(res.data);
+}).catch((err) => {
+    console.log(err);
+})
+
+  
+}, 250));
