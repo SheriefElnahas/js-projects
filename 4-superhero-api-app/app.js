@@ -20,13 +20,12 @@ powerStatesButton.addEventListener('click', () => {
   powerStatesArticle.classList.remove('hide');
 });
 
-
 for (let i = 0; i < buttons.length; i++) {
   buttons[i].addEventListener('click', () => {
     articles.forEach((article) => {
-      article.classList.remove('hide');
+      article.classList.add('hide');
     });
 
-    articles[i].classList.add('hide');
+    articles[i].classList.remove('hide');
   });
 }

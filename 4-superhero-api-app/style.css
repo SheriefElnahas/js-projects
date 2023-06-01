@@ -2,7 +2,7 @@
 
 :root {
   --primary-color: #ed5e5e;
-  --primary-orange:#ffc762;
+  --primary-orange: #ffc762;
 }
 * {
   padding: 0;
@@ -42,9 +42,8 @@ img {
 }
 
 .hide {
-  display:none;
+  display: none;
 }
-
 
 /* Panel */
 .panel {
@@ -104,7 +103,6 @@ img {
 }
 .hero__content {
   padding: 0 2rem 0 1rem;
-
 }
 .hero__name {
   text-transform: uppercase;
@@ -147,49 +145,65 @@ img {
   z-index: 2;
 }
 
-
 /* Power stats */
 
-.powerstate {
-  display:flex;
+.article__row {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  margin:2.5rem 0;
+  margin: 2.5rem 0;
 }
-.powerstats__content {
-  display:flex;
+.row__content {
+  display: flex;
   align-items: center;
-
 }
-.powerstats__icon {
-  margin-right:2rem;
-  color:var(--primary-color);
+.row__icon {
+  margin-right: 1.5rem;
+}
+.icon--shield {
+  color: var(--primary-color);
 }
 
-.powerstats__description {
+.row__description {
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 400;
-  font-size:1.4rem;
-  margin-top:1px;
+  font-size: 1.4rem;
+  margin-top: 1px;
 }
 
-.powerstats__info {
-  color:var(--primary-orange);
+.info--text {
+  color: var(--primary-orange);
   font-weight: bold;
 }
 
 /* Biography */
 .biography__row {
-  display:flex;
-  margin:3rem 0;
+  display: flex;
+  margin: 3rem 0;
 }
 .row__heading {
-  color:#898989;
-  margin-right:1.5rem;
+  color: #898989;
+  margin-right: 1.5rem;
   font-weight: 500;
+  text-transform: capitalize;
 }
 
 .row__details {
   font-weight: 400;
+}
+
+/* Appearance */
+.info--box {
+  color: #fff;
+  background: var(--primary-color);
+  text-transform: capitalize;
+  font-weight: bold;
+  padding: 0.2rem 1rem;
+  border-radius: 10px;
+  font-size: 1.4rem;
+}
+
+.icon--star {
+  color:yellow;
 }
