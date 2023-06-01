@@ -92,17 +92,20 @@ img {
 }
 
 .hero__img {
-  width: 45%;
+  width: 40%;
   height: 500px;
 }
 
 /* Panel Hero */
 .panel__hero {
   display: flex;
-  justify-content: space-around;
+
 }
 .hero__content {
   padding: 0 2rem 0 1rem;
+  width:100%;
+  margin-left:2rem;
+  margin:0 1.1rem;
 }
 .hero__name {
   text-transform: uppercase;
@@ -127,7 +130,7 @@ img {
 }
 
 .hero__tab:not(:last-of-type) {
-  margin-right: 1.5rem;
+  margin-right: 3.5rem;
 }
 
 .hero__tab {
@@ -137,6 +140,7 @@ img {
   color: #fff;
   padding-bottom: 1.5rem;
   font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .active {
@@ -205,5 +209,35 @@ img {
 }
 
 .icon--star {
-  color:yellow;
+  color: yellow;
+}
+
+/* Connections */
+
+.connections__heading {
+  color:gray;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size:1.5rem;
+  margin:2rem 0 1.5rem;
+  position: relative;
+  padding-left:3rem;
+}
+
+.connections__heading::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 2px;
+  width: 19px;
+  height: 3px;
+  background: orange;;
+}
+ 
+.connections__content:nth-of-type(2) {
+  margin-top:3rem;
+
+}
+.connections__text {
+  line-height: 2;
 }
