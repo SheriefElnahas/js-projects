@@ -34,7 +34,7 @@ for (let i = 0; i < buttons.length; i++) {
 
 // https://www.superheroapi.com/api.php/727054372039115/search/
 
-// Helper Function 
+// Helper Function
 function debounce(func, delay = 250) {
   let timerId;
   return (...args) => {
@@ -56,36 +56,274 @@ async function searchSuperHero(searchText) {
     searchListElement.classList.add('hide');
   }
 
-
-
-  console.log(searchText.length > 0)
-  
   if (searchText.length > 0) {
-    // 1- Show the search list 
+    // 1- Show the search list
     searchListElement.classList.remove('hide');
 
+    // 2- Fetch the data
     const result = await axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${searchText}`);
 
-    console.log(result.data.results);
+    superHerosArr.push(...result.data.results);
 
-    const htmlData = result.data.results.map(movie => {
-
-      return `
+    // 3- Build The HTML Out of each data
+    const htmlData = result.data.results
+      .map((superhero) => {
+        return `
       <li class="search__item">
-        <a href="#" class="search__link"><img src="${movie.image.url}" alt="" class="search__img" />${movie.name}</a>
+        <a id="${superhero.id}" href="#" class="search__link"><img src="${superhero.image.url}" alt="" class="search__img" />${superhero.name}</a>
       </li>
-      `
-    }).join('');
+      `;
+      })
+      .join('');
 
+    // 4- Inject the result into the HTML
     searchListElement.innerHTML = htmlData;
   }
-
-
-
-
 }
 
-searchInputElement.addEventListener('input', debounce((e) => {
-  searchSuperHero(e.target.value);
+searchInputElement.addEventListener(
+  'input',
+  debounce((e) => {
+    searchSuperHero(e.target.value);
+  }, 250)
+);
 
-}, 250));
+
+const superheroImage = document.querySelector('.hero__img');
+const powerstateHTMLElement = document.querySelector('#powerstates-article');
+const biographyHTMLElement = document.querySelector('.biography');
+const appearanceHTMlElement = document.querySelector('.appearance');
+const connectionsHTMLElement = document.querySelector('.connections');
+
+function buildPowerstateElement(powerstateData) {
+  let powerstateHTMLData = '';
+
+  for (let key in powerstateData) {
+    powerstateHTMLData += `
+    <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">${key}</p>
+    </div>
+    <p class="row__info info--text">${powerstateData[key]}</p>
+  </div>
+    `;
+  }
+
+  powerstateHTMLElement.innerHTML = powerstateHTMLData;
+}
+
+function buildBiographyElement(biographyData) {
+  let biographyHTMLData = '';
+
+  for (let key in biographyData) {
+    biographyHTMLData += `
+    <div class="biography__row">
+    <p class="row__heading">${key}:</p>
+    <p class="row__details">${biographyData[key]}</p>
+  </div>
+    `
+  }
+
+  biographyHTMLElement.innerHTML = biographyHTMLData
+}
+
+function buildApperanceElement(appearanceData) {
+  let appearanceHTMLData = '';
+
+  for(let key in appearanceData) {
+    appearanceHTMLData += `
+    <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">${key}</p>
+    </div>
+    <p class="row__info info--box">${appearanceData[key]}</p>
+  </div>
+    `
+    appearanceHTMlElement.innerHTML = appearanceHTMLData;
+  }
+}
+
+function buildConnectionsElement(connectionsData) {
+  let connectionsHTMLData = '';
+
+  for(let key in connectionsData) {
+    connectionsHTMLData += `
+    <div class="connections__content">
+    <h3 class="connections__heading">${key}</h3>
+    <p class="connections__text">${connectionsData[key]}</p>
+  </div>
+    `
+  }
+  connectionsHTMLElement.innerHTML = connectionsHTMLData;
+}
+
+searchListElement.addEventListener('click', (e) => {
+  // Hide the search list element when the user clicks on a superhero
+  searchListElement.classList.add('hide');
+
+
+
+  // extract the selected superhero that the user has selected
+  const targetElement = superHerosArr.filter((superhero) => superhero.id === e.target.id);
+
+  // change superhero image
+  superheroImage.src = targetElement[0].image.url;
+
+  // extract these objects from the selected superhero 
+  const { powerstats, biography, appearance, connections } = targetElement[0];
+
+
+  // build HTML element out of the selected superhero data
+  buildPowerstateElement(powerstats);
+  buildBiographyElement(biography);
+  buildApperanceElement(appearance);
+  buildConnectionsElement(connections);
+  // let powerstateHTMLData = '';
+
+  // for (let key in powerstats) {
+
+  //   powerstateHTMLData += `
+  //   <div class="article__row">
+  //   <div class="row__content">
+  //     <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+  //     <p class="row__description">${key}</p>
+  //   </div>
+  //   <p class="row__info info--text">${powerstats[key]}</p>
+  // </div>
+  //   `
+  // }
+
+  // powerstateHTMLElement.innerHTML = powerstateHTMLData;
+
+  const htmlData = `
+  <article id="powerstates-article" class="powerstats">
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">Intelligence</p>
+    </div>
+    <p class="row__info info--text">100</p>
+  </div>
+
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">strength</p>
+    </div>
+    <p class="row__info info--text">100</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">speed</p>
+    </div>
+    <p class="row__info info--text">100</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">Durability</p>
+    </div>
+    <p class="row__info info--text">100</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">Power</p>
+    </div>
+    <p class="row__info info--text">100</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
+      <p class="row__description">Combat</p>
+    </div>
+    <p class="row__info info--text">100</p>
+  </div>
+</article>
+
+<article class="biography hide">
+  <div class="biography__row">
+    <p class="row__heading">Full-Name:</p>
+    <p class="row__details">Bruce Wayne</p>
+  </div>
+  <div class="biography__row">
+    <p class="row__heading">Alert-Egos:</p>
+    <p class="row__details">No alter egos found.</p>
+  </div>
+  <div class="biography__row">
+    <p class="row__heading">Aliases:</p>
+    <p class="row__details">Insider,Matches Malone</p>
+  </div>
+  <div class="biography__row">
+    <p class="row__heading">Place-Of-Birth:</p>
+    <p class="row__details">GCrest Hill,Bristol Township; Gotham Country</p>
+  </div>
+  <div class="biography__row">
+    <p class="row__heading">First-Appearance:</p>
+    <p class="row__details">Detective Comics #27</p>
+  </div>
+  <div class="biography__row">
+    <p class="row__heading">Publisher:</p>
+    <p class="row__details">DC Comics</p>
+  </div>
+</article>
+
+<article class="appearance hide">
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">Gender</p>
+    </div>
+    <p class="row__info info--box">Male</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">Race</p>
+    </div>
+    <p class="row__info info--box">Human</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">Height</p>
+    </div>
+    <p class="row__info info--box">6'2</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">Weight</p>
+    </div>
+    <p class="row__info info--box">210 lb</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">Eye-Color</p>
+    </div>
+    <p class="row__info info--box">Blue</p>
+  </div>
+  <div class="article__row">
+    <div class="row__content">
+      <i class="fa-solid fa-star row__icon icon--star"></i>
+      <p class="row__description">Hair-Color</p>
+    </div>
+    <p class="row__info info--box">Black</p>
+  </div>
+</article>
+<article class="connections hide">
+  <div class="connections__content">
+    <h3 class="connections__heading">Group--Affiliation</h3>
+    <p class="connections__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia tenetur cum nihil fugit aliquam optio amet delectus quam dolor harum?</p>
+  </div>
+  <div class="connections__content">
+    <h3 class="connections__heading">Group--Affiliation</h3>
+    <p class="connections__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus adipisci ea vitae et quisquam? Minima dolorem veniam quaerat dolor dicta optio voluptates eum asperiores repellat vero numquam, reprehenderit ipsam eos? Minus praesentium minima vero ullam sed maiores? Quibusdam, illo saepe.</p>
+  </div>
+</article>
+  `;
+});
