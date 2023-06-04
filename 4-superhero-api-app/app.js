@@ -30,6 +30,7 @@ for (let i = 0; i < buttons.length; i++) {
   });
 }
 
+// API Logic
 
 // https://www.superheroapi.com/api.php/727054372039115/search/
 
@@ -44,16 +45,18 @@ function debounce(func, delay = 250) {
   };
 }
 
+const superHerosArr = [];
 const searchInputElement = document.querySelector('#search-input');
 
+
+async function searchSuperHero(searchText) {
+  const result = await axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${searchText}`);
+
+  console.log(result.data.results);
+
+}
+
 searchInputElement.addEventListener('input', debounce((e) => {
-  console.log(e.target.value);
+  searchSuperHero(e.target.value);
 
-  axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${e.target.value}`).then((res) => {
-  console.log(res.data);
-}).catch((err) => {
-    console.log(err);
-})
-
-  
 }, 250));
