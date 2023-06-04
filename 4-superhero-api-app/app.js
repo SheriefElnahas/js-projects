@@ -48,11 +48,40 @@ function debounce(func, delay = 250) {
 const superHerosArr = [];
 const searchInputElement = document.querySelector('#search-input');
 
+const searchListElement = document.querySelector('.search__list');
 
 async function searchSuperHero(searchText) {
-  const result = await axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${searchText}`);
+  // Hide the search list if the the input is empty
+  if (searchText.length === 0) {
+    searchListElement.classList.add('hide');
+  }
 
-  console.log(result.data.results);
+
+
+  console.log(searchText.length > 0)
+  
+  if (searchText.length > 0) {
+    // 1- Show the search list 
+    searchListElement.classList.remove('hide');
+
+    const result = await axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${searchText}`);
+
+    console.log(result.data.results);
+
+    const htmlData = result.data.results.map(movie => {
+
+      return `
+      <li class="search__item">
+        <a href="#" class="search__link"><img src="${movie.image.url}" alt="" class="search__img" />${movie.name}</a>
+      </li>
+      `
+    }).join('');
+
+    searchListElement.innerHTML = htmlData;
+  }
+
+
+
 
 }
 

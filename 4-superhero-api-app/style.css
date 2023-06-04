@@ -110,9 +110,12 @@ a {
   top: 42px;
   right: 7px;
   z-index: 100;
+
 }
 .search__list {
   background: #000;
+  height:200px;
+  overflow: auto;
 }
 .search__item {
   font-weight: bold;
