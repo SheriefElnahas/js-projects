@@ -1,4 +1,7 @@
-const buttons = document.querySelectorAll('.hero__tab');
+// ********************************************
+// ##            Active Tab Logic            ##
+// ******************************************** 
+const buttons = document.querySelectorAll('.state__tab');
 const articles = document.querySelectorAll('article');
 
 buttons.forEach((button) => {
@@ -114,11 +117,14 @@ function buildPowerstateElement(powerstateData) {
 }
 
 function buildBiographyElement(biographyData) {
+  delete biographyData.alignment;
+  biographyData.aliases.splice(2, biographyData.aliases.length - 2);
+
   let biographyHTMLData = '';
 
   for (let key in biographyData) {
     biographyHTMLData += `
-    <div class="biography__row">
+    <div class="article__row">
     <p class="row__heading">${key}:</p>
     <p class="row__details">${biographyData[key]}</p>
   </div>
@@ -131,7 +137,7 @@ function buildBiographyElement(biographyData) {
 function buildApperanceElement(appearanceData) {
   let appearanceHTMLData = '';
 
-  for(let key in appearanceData) {
+  for (let key in appearanceData) {
     appearanceHTMLData += `
     <div class="article__row">
     <div class="row__content">
@@ -148,7 +154,7 @@ function buildApperanceElement(appearanceData) {
 function buildConnectionsElement(connectionsData) {
   let connectionsHTMLData = '';
 
-  for(let key in connectionsData) {
+  for (let key in connectionsData) {
     connectionsHTMLData += `
     <div class="connections__content">
     <h3 class="connections__heading">${key}</h3>
@@ -180,150 +186,7 @@ searchListElement.addEventListener('click', (e) => {
   buildBiographyElement(biography);
   buildApperanceElement(appearance);
   buildConnectionsElement(connections);
-  // let powerstateHTMLData = '';
 
-  // for (let key in powerstats) {
 
-  //   powerstateHTMLData += `
-  //   <div class="article__row">
-  //   <div class="row__content">
-  //     <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-  //     <p class="row__description">${key}</p>
-  //   </div>
-  //   <p class="row__info info--text">${powerstats[key]}</p>
-  // </div>
-  //   `
-  // }
 
-  // powerstateHTMLElement.innerHTML = powerstateHTMLData;
-
-  const htmlData = `
-  <article id="powerstates-article" class="powerstats">
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-      <p class="row__description">Intelligence</p>
-    </div>
-    <p class="row__info info--text">100</p>
-  </div>
-
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-      <p class="row__description">strength</p>
-    </div>
-    <p class="row__info info--text">100</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-      <p class="row__description">speed</p>
-    </div>
-    <p class="row__info info--text">100</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-      <p class="row__description">Durability</p>
-    </div>
-    <p class="row__info info--text">100</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-      <p class="row__description">Power</p>
-    </div>
-    <p class="row__info info--text">100</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-shield-halved row__icon icon--shield"></i>
-      <p class="row__description">Combat</p>
-    </div>
-    <p class="row__info info--text">100</p>
-  </div>
-</article>
-
-<article class="biography hide">
-  <div class="biography__row">
-    <p class="row__heading">Full-Name:</p>
-    <p class="row__details">Bruce Wayne</p>
-  </div>
-  <div class="biography__row">
-    <p class="row__heading">Alert-Egos:</p>
-    <p class="row__details">No alter egos found.</p>
-  </div>
-  <div class="biography__row">
-    <p class="row__heading">Aliases:</p>
-    <p class="row__details">Insider,Matches Malone</p>
-  </div>
-  <div class="biography__row">
-    <p class="row__heading">Place-Of-Birth:</p>
-    <p class="row__details">GCrest Hill,Bristol Township; Gotham Country</p>
-  </div>
-  <div class="biography__row">
-    <p class="row__heading">First-Appearance:</p>
-    <p class="row__details">Detective Comics #27</p>
-  </div>
-  <div class="biography__row">
-    <p class="row__heading">Publisher:</p>
-    <p class="row__details">DC Comics</p>
-  </div>
-</article>
-
-<article class="appearance hide">
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-star row__icon icon--star"></i>
-      <p class="row__description">Gender</p>
-    </div>
-    <p class="row__info info--box">Male</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-star row__icon icon--star"></i>
-      <p class="row__description">Race</p>
-    </div>
-    <p class="row__info info--box">Human</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-star row__icon icon--star"></i>
-      <p class="row__description">Height</p>
-    </div>
-    <p class="row__info info--box">6'2</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-star row__icon icon--star"></i>
-      <p class="row__description">Weight</p>
-    </div>
-    <p class="row__info info--box">210 lb</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-star row__icon icon--star"></i>
-      <p class="row__description">Eye-Color</p>
-    </div>
-    <p class="row__info info--box">Blue</p>
-  </div>
-  <div class="article__row">
-    <div class="row__content">
-      <i class="fa-solid fa-star row__icon icon--star"></i>
-      <p class="row__description">Hair-Color</p>
-    </div>
-    <p class="row__info info--box">Black</p>
-  </div>
-</article>
-<article class="connections hide">
-  <div class="connections__content">
-    <h3 class="connections__heading">Group--Affiliation</h3>
-    <p class="connections__text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia tenetur cum nihil fugit aliquam optio amet delectus quam dolor harum?</p>
-  </div>
-  <div class="connections__content">
-    <h3 class="connections__heading">Group--Affiliation</h3>
-    <p class="connections__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus adipisci ea vitae et quisquam? Minima dolorem veniam quaerat dolor dicta optio voluptates eum asperiores repellat vero numquam, reprehenderit ipsam eos? Minus praesentium minima vero ullam sed maiores? Quibusdam, illo saepe.</p>
-  </div>
-</article>
-  `;
 });
