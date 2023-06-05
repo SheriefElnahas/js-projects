@@ -1,6 +1,6 @@
 // ********************************************
 // ##            Active Tab Logic            ##
-// ******************************************** 
+// ********************************************
 const buttons = document.querySelectorAll('.state__tab');
 const articles = document.querySelectorAll('article');
 
@@ -16,6 +16,9 @@ buttons.forEach((button) => {
   });
 });
 
+// ********************************************
+// ##           Show & Hide Sections         ##
+// ********************************************
 const powerStatesButton = document.getElementById('powerstates-bttuon');
 const powerStatesArticle = document.getElementById('powerstates-article');
 
@@ -35,8 +38,6 @@ for (let i = 0; i < buttons.length; i++) {
 
 // API Logic
 
-// https://www.superheroapi.com/api.php/727054372039115/search/
-
 // Helper Function
 function debounce(func, delay = 250) {
   let timerId;
@@ -48,9 +49,11 @@ function debounce(func, delay = 250) {
   };
 }
 
+// ********************************************
+// ##       Fetch Data & Show Search List    ##
+// ********************************************
 const superHerosArr = [];
 const searchInputElement = document.querySelector('#search-input');
-
 const searchListElement = document.querySelector('.search__list');
 
 async function searchSuperHero(searchText) {
@@ -91,7 +94,9 @@ searchInputElement.addEventListener(
   }, 250)
 );
 
-
+// ********************************************
+// ##    Dynamic Data Based On Search Value   ##
+// ********************************************
 const superheroImage = document.querySelector('.hero__img');
 const powerstateHTMLElement = document.querySelector('#powerstates-article');
 const biographyHTMLElement = document.querySelector('.biography');
@@ -128,10 +133,10 @@ function buildBiographyElement(biographyData) {
     <p class="row__heading">${key}:</p>
     <p class="row__details">${biographyData[key]}</p>
   </div>
-    `
+    `;
   }
 
-  biographyHTMLElement.innerHTML = biographyHTMLData
+  biographyHTMLElement.innerHTML = biographyHTMLData;
 }
 
 function buildApperanceElement(appearanceData) {
@@ -146,7 +151,7 @@ function buildApperanceElement(appearanceData) {
     </div>
     <p class="row__info info--box">${appearanceData[key]}</p>
   </div>
-    `
+    `;
     appearanceHTMlElement.innerHTML = appearanceHTMLData;
   }
 }
@@ -160,7 +165,7 @@ function buildConnectionsElement(connectionsData) {
     <h3 class="connections__heading">${key}</h3>
     <p class="connections__text">${connectionsData[key]}</p>
   </div>
-    `
+    `;
   }
   connectionsHTMLElement.innerHTML = connectionsHTMLData;
 }
@@ -169,24 +174,18 @@ searchListElement.addEventListener('click', (e) => {
   // Hide the search list element when the user clicks on a superhero
   searchListElement.classList.add('hide');
 
-
-
   // extract the selected superhero that the user has selected
   const targetElement = superHerosArr.filter((superhero) => superhero.id === e.target.id);
 
   // change superhero image
   superheroImage.src = targetElement[0].image.url;
 
-  // extract these objects from the selected superhero 
+  // extract these objects from the selected superhero
   const { powerstats, biography, appearance, connections } = targetElement[0];
-
 
   // build HTML element out of the selected superhero data
   buildPowerstateElement(powerstats);
   buildBiographyElement(biography);
   buildApperanceElement(appearance);
   buildConnectionsElement(connections);
-
-
-
 });

@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;900&display=swap');
 
-/*************************************
-// ###        General Setup      ####  
-*************************************/
+/******************************************
+// ###           General Setup         ####  
+*******************************************/
 :root {
-  --primary-color: #f64445;
+  --primary-red: #f64445;
   --primary-orange: #ffc762;
 }
 * {
@@ -16,13 +16,13 @@
 html {
   font-size: 62.5%;
 }
+
 body {
   min-height: 100vh;
   background: #f64445;
   background: -o-linear-gradient(281deg, #f64445 0%, #611cac 100%);
   background: linear-gradient(169deg, #f64445 0%, #611cac 100%);
   font-family: 'Poppins', sans-serif;
-
   display: grid;
   place-content: center;
   font-size: 1.6rem;
@@ -52,18 +52,27 @@ a {
   text-decoration: none;
 }
 
+/******************************************
+// ###           Helper Classses       ####  
+*******************************************/
 .hide {
   display: none;
 }
 
-/* Panel */
+.highlight {
+  color: var(--primary-red);
+}
+
+/******************************************
+// ###             Panel               ####  
+*******************************************/
 .panel {
   background: #000000;
   padding: 2rem 3rem 1.5rem;
   margin: 3rem 0;
   border-radius: 5px;
   width: 1000px;
-  box-shadow: 4px 4px 8px rgba(0,0,0,0.2);
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .panel__header {
@@ -78,10 +87,6 @@ a {
   font-size: 2.2rem;
 }
 
-.highlight {
-  color: var(--primary-color);
-}
-
 .panel__input {
   padding: 1rem 2rem;
   width: 40rem;
@@ -90,14 +95,13 @@ a {
   border-radius: 50px;
   color: #fff;
   margin-top: 1rem;
-  outline:1px solid rgb(104, 104, 104);
-
+  outline: 1px solid rgb(104, 104, 104);
 }
 
 .panel__input:active,
 .panel__input:focus {
-  outline: 1px solid var(--primary-color);
-  border:1px solid var(--primary-color);
+  outline: 1px solid var(--primary-red);
+  border: 1px solid var(--primary-red);
 }
 
 .icon__search {
@@ -112,24 +116,25 @@ a {
   width: 40%;
   height: 450px;
   border-radius: 10px;
-  box-shadow: 0px 0px 10px -1px  var(--primary-orange);
+  box-shadow: 0px 0px 10px -1px var(--primary-orange);
 }
 
-/* Search */
+/******************************************
+// ###              Search             ####  
+*******************************************/
 .search__container {
   width: 38rem;
   position: absolute;
   top: 55px;
   right: 8px;
   z-index: 100;
-
-
 }
+
 .search__list {
   background: #000;
   height: 200px;
   overflow: auto;
-  border-bottom:3px solid var(--primary-orange);
+  border-bottom: 3px solid var(--primary-orange);
 }
 .search__item {
   font-weight: bold;
@@ -147,11 +152,12 @@ a {
   margin-right: 1rem;
 }
 
-/* Panel Hero */
+/******************************************
+// ###            Panel Hero           ####
+*******************************************/
 .panel__hero {
   display: flex;
   padding-bottom: 2rem;
-
 }
 .hero__content {
   padding: 0 2rem 0 3rem;
@@ -163,15 +169,12 @@ a {
   text-transform: uppercase;
   margin-top: -6px;
   letter-spacing: 4px;
-  font-size:2.2rem;
-
+  font-size: 2.2rem;
 }
 
 .state__tabs {
   margin: 2rem 0;
   position: relative;
-  /* width: 550px; */
-
 }
 
 .state__tabs::after {
@@ -200,22 +203,25 @@ a {
 }
 
 .active {
-  border-bottom: 5px solid var(--primary-color);
+  border-bottom: 5px solid var(--primary-red);
   position: relative;
   z-index: 2;
 }
 
+/******************************************
+// ###        Power State Article      ####
+*******************************************/
 /* Power stats */
 
 .article__row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-right:1.5rem;
+  margin-right: 1.5rem;
 }
 .article__row:not(:last-of-type) {
-  margin-top:3.3rem;
-  margin-bottom:3.3rem;
+  margin-top: 3.3rem;
+  margin-bottom: 3.3rem;
 }
 .row__content {
   display: flex;
@@ -225,7 +231,7 @@ a {
   margin-right: 2.3rem;
 }
 .icon--shield {
-  color: var(--primary-color);
+  color: var(--primary-red);
 }
 
 .row__description {
@@ -241,15 +247,17 @@ a {
   font-weight: bold;
 }
 
+/******************************************
+// ###        Biography Article        ####
+*******************************************/
 /* Biography */
 .biography .article__row {
- justify-content: flex-start;
-
+  justify-content: flex-start;
 }
 
 .biography .article__row:not(:last-of-type) {
-  margin-top:3.3rem;
-  margin-bottom:3.3rem;
+  margin-top: 3.3rem;
+  margin-bottom: 3.3rem;
 }
 .row__heading {
   color: #898989;
@@ -261,16 +269,14 @@ a {
 .row__details {
   font-weight: 400;
   text-overflow: ellipsis;
-
-
-  
- 
 }
 
-/* Appearance */
+/******************************************
+// ###         Apperance Article        ####
+*******************************************/
 .info--box {
   color: #fff;
-  background: var(--primary-color);
+  background: var(--primary-red);
   text-transform: capitalize;
   font-weight: bold;
   padding: 0.2rem 1rem;
@@ -282,7 +288,9 @@ a {
   color: yellow;
 }
 
-/* Connections */
+/******************************************
+// ###         Connections Article       ####
+*******************************************/
 
 .connections__heading {
   color: gray;
