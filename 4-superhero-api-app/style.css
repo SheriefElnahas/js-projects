@@ -232,7 +232,7 @@ a {
   z-index:300;
 }
 .state__tab:focus {
-  outline:3px solid var(--primary-orange);
+  outline:3px solid var(--primary-red);
   padding-top:1.5rem;
 
 }
