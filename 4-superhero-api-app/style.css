@@ -226,7 +226,15 @@ a {
   color: #fff;
   padding-bottom: 1.5rem;
   font-weight: 500;
+  padding-top:1.5rem;
   letter-spacing: 1px;
+  position: relative;
+  z-index:300;
+}
+.state__tab:focus {
+  outline:3px solid var(--primary-orange);
+  padding-top:1.5rem;
+
 }
 
 .active {
