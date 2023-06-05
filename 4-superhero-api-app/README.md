@@ -6,6 +6,12 @@ Discover your favorite superheroes with Superhero Search - the ultimate app that
 
 ![superhero-api-app](https://github.com/SheriefElnahas/js-projects/assets/47671429/b5121ed4-ac88-457f-8af9-bf11402d3e06)
 
+
+## Website URL
+
+You can check the live website at this URL [Superhero API App](https://sherief-elnahas-js-superhero-api.netlify.app/)
+
+
 ## This project helped me to learn and pratice the following :
 
 - DOM Manpulation
@@ -17,9 +23,7 @@ Discover your favorite superheroes with Superhero Search - the ultimate app that
 
 HTML , CSS , BEM , Responsive Design , JS, API , AXIOS
 
-## Website URL
 
-You can check the live website at this URL https://sherief-elnahas-js-tip-calculator.netlify.app/
 
 ## Credits
 
