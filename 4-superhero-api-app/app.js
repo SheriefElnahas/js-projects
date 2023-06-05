@@ -64,20 +64,27 @@ async function searchSuperHero(searchText) {
 
 
   if (searchText.length > 0) {
-    // 1- Show the search list
+    //  Show the search list
     searchListElement.classList.remove('hide');
 
-    // 2- Fetch the data
+    // Fetch the data
     const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/search/${searchText}`);
-    console.log(result);
-    superHerosArr.push(...result.data.results);
 
-    // 3- Build The HTML Out of each data
-    const htmlData = result.data.results
+    // Delete any superhero whose intelligence is null, who has a non-working image.
+    const filteredSuperHeroData = result.data.results.filter((superhero) => {
+
+      return superhero.powerstats.intelligence !== 'null';
+    });
+
+    superHerosArr.push(...filteredSuperHeroData);
+
+    // Build The HTML Out of each data
+    const htmlData = filteredSuperHeroData
       .map((superhero) => {
+
         return `
       <li class="search__item">
-        <a id="${superhero.id}" href="#" class="search__link"><img src="${superhero.image.url}" alt="" class="search__img" />${superhero.name}</a>
+        <a id="${superhero.id}" href="#" class="search__link"><img src="${superhero.image.url}"  alt="superhero ${superhero.name} image" class="search__img" width="50" height="50" />${superhero.name}</a>
       </li>
       `;
       })
@@ -98,7 +105,7 @@ searchInputElement.addEventListener(
 // ********************************************
 // ##    Dynamic Data Based On Search Value   ##
 // ********************************************
-const superheroImage = document.querySelector('.hero__img');
+const superheroImageElement = document.querySelector('.hero__img');
 const powerstateHTMLElement = document.querySelector('#powerstates-article');
 const biographyHTMLElement = document.querySelector('.biography');
 const appearanceHTMlElement = document.querySelector('.appearance');
@@ -187,25 +194,31 @@ function buildConnectionsElement(connectionsData) {
   connectionsHTMLElement.innerHTML = connectionsHTMLData;
 }
 
-searchListElement.addEventListener('click', (e) => {
-  // Hide the search list element when the user clicks on a superhero
-  searchListElement.classList.add('hide');
+const panelHero =
+  searchListElement.addEventListener('click', (e) => {
+    // Hide the search list element when the user clicks on a superhero
+    searchListElement.classList.add('hide');
 
-  // extract the selected superhero that the user has selected
-  const targetElement = superHerosArr.filter((superhero) => superhero.id === e.target.id);
+    // extract the selected superhero that the user has selected
+    const targetElement = superHerosArr.filter((superhero) => superhero.id === e.target.id);
 
-  // change superhero image
-  superheroImage.src = targetElement[0].image.url;
+    // change superhero image
+    superheroImageElement.src = targetElement[0].image.url
+    superheroImageElement.setAttribute('alt', `superhero ${targetElement[0].name} cover image`)
 
-  // extract these objects from the selected superhero
-  const { powerstats, biography, appearance, connections } = targetElement[0];
 
-  // build HTML element out of the selected superhero data
-  buildPowerstateElement(powerstats);
-  buildBiographyElement(biography);
-  buildApperanceElement(appearance);
-  buildConnectionsElement(connections);
-});
+
+
+
+    // extract these objects from the selected superhero
+    const { powerstats, biography, appearance, connections } = targetElement[0];
+
+    // build HTML element out of the selected superhero data
+    buildPowerstateElement(powerstats);
+    buildBiographyElement(biography);
+    buildApperanceElement(appearance);
+    buildConnectionsElement(connections);
+  });
 
 
 async function init() {
@@ -213,7 +226,7 @@ async function init() {
   const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/70`);
 
   // Change Superhero Image
-  superheroImage.src = result.data.image.url;
+  superheroImageElement.src = result.data.image.url;
 
   // Extract The Superhero Data
   const { powerstats, biography, appearance, connections } = result.data
