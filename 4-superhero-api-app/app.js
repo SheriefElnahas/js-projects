@@ -1,3 +1,5 @@
+
+
 // ********************************************
 // ##            Active Tab Logic            ##
 // ********************************************
@@ -223,6 +225,7 @@ const panelHero =
 
 async function init() {
   // Extract Batman Data
+
   const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/70`);
 
   // Change Superhero Image
