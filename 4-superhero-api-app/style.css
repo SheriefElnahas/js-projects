@@ -268,7 +268,8 @@ a {
 
 .row__details {
   font-weight: 400;
-  text-overflow: ellipsis;
+
+  font-size:1.4rem;
 }
 
 /******************************************
@@ -318,5 +319,7 @@ a {
   margin-top: 3rem;
 }
 .connections__text {
-  line-height: 2;
+  line-height: 1.7;
+  font-size:1.4rem;
+
 }

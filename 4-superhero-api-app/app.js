@@ -62,12 +62,13 @@ async function searchSuperHero(searchText) {
     searchListElement.classList.add('hide');
   }
 
+
   if (searchText.length > 0) {
     // 1- Show the search list
     searchListElement.classList.remove('hide');
 
     // 2- Fetch the data
-    const result = await axios.get(`https://www.superheroapi.com/api.php/727054372039115/search/${searchText}`);
+    const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/search/${searchText}`);
 
     superHerosArr.push(...result.data.results);
 
@@ -105,7 +106,7 @@ const connectionsHTMLElement = document.querySelector('.connections');
 
 function buildPowerstateElement(powerstateData) {
   let powerstateHTMLData = '';
-
+ 
   for (let key in powerstateData) {
     powerstateHTMLData += `
     <div class="article__row">
@@ -121,9 +122,18 @@ function buildPowerstateElement(powerstateData) {
   powerstateHTMLElement.innerHTML = powerstateHTMLData;
 }
 
+function shortenData(arr) {
+  if(Array.isArray(arr)) {
+    return arr.splice(2, arr.length - 2);
+  }
+
+}
+
 function buildBiographyElement(biographyData) {
   delete biographyData.alignment;
-  biographyData.aliases.splice(2, biographyData.aliases.length - 2);
+
+  shortenData(biographyData.aliases);
+  shortenData(biographyData['first-appearance']);
 
   let biographyHTMLData = '';
 
@@ -189,3 +199,18 @@ searchListElement.addEventListener('click', (e) => {
   buildApperanceElement(appearance);
   buildConnectionsElement(connections);
 });
+
+
+async function init() {
+  const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/70`);
+  console.log(result.data);
+  superheroImage.src = result.data.image.url; 
+  const { powerstats, biography, appearance, connections } = result.data
+
+  buildPowerstateElement(powerstats);
+  buildBiographyElement(biography);
+  buildApperanceElement(appearance);
+  buildConnectionsElement(connections);
+}
+
+init();
