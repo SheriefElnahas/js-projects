@@ -53,6 +53,32 @@ a {
 }
 
 /******************************************
+// ###        Customized Scrollbar       ####  
+*******************************************/
+::-webkit-scrollbar {
+  width: 0.8em;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(0 0% 0%);
+  border-radius: 100vw;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(#642bff, #ff22e6) ;
+  /* background: hsl(147.84deg 66.79% 39.65%); */
+  border-radius: 100vw;
+  cursor: pointer;
+}
+
+@supports (scrollbar-color: teal black) {
+  * {
+    scrollbar-color: teal black;
+  }
+}
+
+/******************************************
 // ###           Helper Classses       ####  
 *******************************************/
 .hide {
@@ -132,7 +158,8 @@ a {
 
 .search__list {
   background: #000;
-  height: 200px;
+
+  max-height:200px;
   overflow: auto;
   border-bottom: 3px solid var(--primary-orange);
 }
