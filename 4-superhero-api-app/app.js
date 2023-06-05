@@ -69,7 +69,7 @@ async function searchSuperHero(searchText) {
 
     // 2- Fetch the data
     const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/search/${searchText}`);
-
+    console.log(result);
     superHerosArr.push(...result.data.results);
 
     // 3- Build The HTML Out of each data
@@ -106,7 +106,7 @@ const connectionsHTMLElement = document.querySelector('.connections');
 
 function buildPowerstateElement(powerstateData) {
   let powerstateHTMLData = '';
- 
+
   for (let key in powerstateData) {
     powerstateHTMLData += `
     <div class="article__row">
@@ -122,18 +122,25 @@ function buildPowerstateElement(powerstateData) {
   powerstateHTMLElement.innerHTML = powerstateHTMLData;
 }
 
-function shortenData(arr) {
-  if(Array.isArray(arr)) {
+// Shorten Array Data
+function shortenArrData(arr) {
+  if (Array.isArray(arr)) {
     return arr.splice(2, arr.length - 2);
   }
+}
 
+// Shorten String Data
+function shortenStrData(obj) {
+  obj['first-appearance'] = obj['first-appearance'].split(';')[0];
+  return obj;
 }
 
 function buildBiographyElement(biographyData) {
   delete biographyData.alignment;
 
-  shortenData(biographyData.aliases);
-  shortenData(biographyData['first-appearance']);
+  shortenArrData(biographyData.aliases); // strange example for long list of aliases
+  shortenStrData(biographyData)  // spider first search is example of long list of first apperance string data
+
 
   let biographyHTMLData = '';
 
@@ -202,11 +209,16 @@ searchListElement.addEventListener('click', (e) => {
 
 
 async function init() {
+  // Extract Batman Data
   const result = await axios.get(`https://www.superheroapi.com/api.php/730636292148818/70`);
-  console.log(result.data);
-  superheroImage.src = result.data.image.url; 
+
+  // Change Superhero Image
+  superheroImage.src = result.data.image.url;
+
+  // Extract The Superhero Data
   const { powerstats, biography, appearance, connections } = result.data
 
+  // Build HTML Out of the extracted ata
   buildPowerstateElement(powerstats);
   buildBiographyElement(biography);
   buildApperanceElement(appearance);
