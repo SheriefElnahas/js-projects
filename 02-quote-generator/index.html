@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get a random quote" />
+    <title>Quote Generator</title>
+
+
+    <!-- Fav Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.js" integrity="sha512-RjvSEaeDqPCfUVQ9kna2/2OqHz/7F04IOl1/66LmQjB/lOeAzwq7LrbTzDbz5cJzlPNJ5qteNtHR56XaJSTNWw==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+
+    <script src="https://kit.fontawesome.com/75016b0d3c.js" crossorigin="anonymous"></script>
+
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <div class="card">
+        <h1 class="card__heading">Quote of the Day</h1>
+        <div class="quote__container">
+          <blockquote class="card__quote"><i class="fa-solid fa-quote-left" aria-hidden="true"></i>O People! Certainly your Lord is one, your father is one. An Arab has no virtue over a Non Arab, nor does a Non Arab have virtue over an Arab, a red skinned person is not more virtuous than a dark skinned person nor is a dark skinned person more virtuous than a red skinned person except through Taqwa.<i class="fa-solid fa-quote-right" aria-hidden="true"></i></blockquote>
+          <p class="quote__author">&ndash; Prophet Muhammad <small>( Peace Be Upon Him )</small></p>
+        </div>
+
+        <div class="card__actions">
+          <div class="card__buttons">
+
+            <button class="btn btn--icon btn--speak" aria-label="Allow Speech Synthesis"><i class="fa-solid fa-volume-high"></i></button>
+            <button class="btn btn--icon btn--pause" aria-label="Stop Speech Synthesis"><i class="fa-solid fa-pause"></i></button>
+            <button class="btn btn--icon btn--copy" aria-label="Copy to clipboard"><i class="fa-solid fa-paste"></i></button>
+            <a href="#" class="btn btn--icon btn--tweet" aria-label="Share on Twitter"><i class="fa-brands fa-twitter" aria-label="Share on Twitter" role="link"></i></a>
+          </div>
+          <button class="btn btn--quote">New Quote</button>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
