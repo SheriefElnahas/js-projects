@@ -12,15 +12,27 @@
       <section class="card">
         <h1 class="card__heading">Todo List</h1>
         <form class="form">
-          <input type="text" class="form__input" />
-          <button class="form__button">Submit</button>
+          <input type="text" class="form__input" placeholder="Learn React" />
+          <button class="form__button">Add</button>
         </form>
         <ul class="card__list">
-          <li class="card__item">Item 1 <i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></li>
-          <li class="card__item">Item 2 <i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></li>
-          <li class="card__item">Item 3<i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></li>
+          <li class="card__item">
+            Item 1
+            <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
+          </li>
+          <li class="card__item">
+            Item 1
+            <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
+          </li>
+          <li class="card__item">
+            Item 1
+            <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
+          </li>
         </ul>
-        <button class="clear__button">Clear All</button>
+        <div class="button__container">
+          <button class="clear__button">Clear All</button>
+        </div>
+
       </section>
     </main>
     <script src="app.js"></script>

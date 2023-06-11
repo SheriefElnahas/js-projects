@@ -7,11 +7,132 @@
 }
 
 body {
-  background:#333;
+  background:#F1f5f8;
   color:#fff;
   font-family: 'Roboto', sans-serif;
+  height:100vh;
+  display:grid;
+  place-content: center;
 }
 
 input, button {
   font-family: inherit;
+}
+ul {
+  list-style: none;
+}
+button {
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.card {
+  background:#fff;
+  color:#333;
+  padding:4rem 2rem 1.5rem;
+  width:560px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 14px rgba(0,0,0,0.2);
+}
+
+.card__heading {
+  font-size:2rem;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.form {
+  margin-bottom:2rem;
+  display:flex;
+  align-items: center;
+}
+
+.form__input {
+  width:90%;
+  padding:0.4rem 0.8rem;
+  border:none;
+  background:#F1f5f8;
+  font-size:1rem;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  outline:1px solid transparent;
+  border:1px solid transparent;
+
+}
+
+.form__input:focus {
+  outline:1px solid hsl(205, 95%, 71%);
+  border:1px solid hsl(205, 95%, 71%); 
+}
+.form__input:active {
+  outline:1px solid hsl(205, 95%, 71%);
+  border:1px solid hsl(205, 95%, 71%); 
+}
+.form__button {
+  padding:0.58rem 1rem;
+  border:none;
+  background: hsl(205, 95%, 71%);
+  margin-left: -1px;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+
+}
+.form__button:hover {
+  background: hsl(205, 95%, 81%);
+}
+
+.card__item {
+  display:flex;
+  justify-content: space-between;
+  padding:0.5rem 1rem;
+  letter-spacing: 1px;
+  font-size:1.2rem;
+  border-radius: 10px;
+  margin-bottom:1rem;
+}
+.card__item:hover {
+  background:#F1f5f8;
+}
+.card__icon {
+  font-size:0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+.icon--edit {
+  margin-right:1rem;
+  color:hsl(125, 71%, 66%);
+}
+.icon--edit:hover {
+  color:hsl(125, 71%, 46%);
+}
+.icon--delete {
+  color:hsl(360, 71%, 66%);
+}
+.icon--delete:hover {
+  color:hsl(360, 71%, 46%); 
+}
+
+.button__container {
+  text-align: center;
+  padding:1rem 0;
+
+}
+.clear__button {
+  font-size:1rem;
+  letter-spacing: 4px;
+  background:transparent;
+  border:none;
+
+  background:#483a3a;
+  padding:0.6rem 1.4rem;
+  border-radius: 5px;
+  background:hsl(360, 71%, 66%);
+  color:#fff;
+}
+.clear__button:hover {
+  background:hsl(360, 71%, 56%);
 }
