@@ -157,7 +157,7 @@ button {
   padding: 0.6rem 1.4rem;
   border-radius: 5px;
   background: hsl(360, 71%, 66%);
-  color: #fff;
+  color: #000;
   visibility: hidden;
   margin-inline: auto;
 }
