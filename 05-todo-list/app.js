@@ -5,8 +5,6 @@ const formButton = document.querySelector('.form__button');
 const cardList = document.querySelector('.card__list');
 const clearAllButton = document.querySelector('.clear__button');
 
-
-
 const todosArr = Array.from(cardList.children);
 console.log(todosArr);
 // *********************  Helper Functions *****************
@@ -29,9 +27,10 @@ function addTodo(todo) {
   }
 
   const newTodo = document.createElement('li');
+  newTodo.className = 'card__item';
 
-  newTodo.innerHTML = `<li class="card__item"> ${todo} <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon  icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
-</li>`;
+  newTodo.innerHTML = `${todo} <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon  icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
+`;
 
   cardList.appendChild(newTodo);
 
@@ -49,7 +48,8 @@ formButton.addEventListener('click', () => {
     addTodo(formInput.value);
 
     // Show Clear All Button if the list has any item
-    if (cardList.innerHTML !== '') {
+
+    if (cardList.children.length !== 0) {
       clearAllButton.style.visibility = 'visible';
     }
   }
@@ -72,8 +72,8 @@ cardList.addEventListener('click', (e) => {
 
     li.remove();
     showAlertText('Item Removed', 'alert--red');
-    console.log(cardList.children.length);
 
+    console.log(cardList.children);
     if (cardList.children.length === 0) {
       // Hide Clear ALl button
 
