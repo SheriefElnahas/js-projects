@@ -27,6 +27,12 @@ function showAlertText(alertMessage, alertBackgroundClass) {
 }
 
 function addTodoToTheList(todo) {
+  // If the user didn't provide any value then show alert message and dont add any item to the list
+  if(todo.length === 0) {
+    showAlertText('Please Enter Value', 'alert--removed');
+    return;
+  }
+
   const capatalizedTodo = capatalizedStr(todo);
   const newTodo = document.createElement('li');
 
@@ -46,6 +52,7 @@ addButton.addEventListener('click', () => {
   
   addTodoToTheList(formInput.value);
 
+  // Show Clear All Button if the list has any item
   if(cardList.innerHTML !== '') {
     clearAllButton.style.visibility = 'visible';
   }
