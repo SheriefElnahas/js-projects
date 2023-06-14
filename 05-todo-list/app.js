@@ -24,7 +24,7 @@ function insertTodoInHTML(todoText, todoId) {
 window.addEventListener('load', () => {
   // Extract Stored Todo Items From Local Storage - If it is not exist then assign it to an empty array
   storedTodoArr = JSON.parse(localStorage.getItem('todoItems')) || [];
-  console.log(storedTodoArr);
+
 
   if (storedTodoArr.length > 0) {
     clearAllButton.style.visibility = 'visible';
