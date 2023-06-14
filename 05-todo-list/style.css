@@ -157,6 +157,8 @@ button {
   border-radius: 5px;
   background: hsl(360, 71%, 66%);
   color: #fff;
+  visibility: hidden;
+  margin-inline: auto;
 }
 .clear__button:hover {
   background: hsl(360, 71%, 56%);
