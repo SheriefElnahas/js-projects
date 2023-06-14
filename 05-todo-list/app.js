@@ -1,25 +1,27 @@
-const formInput = document.querySelector('.form__input');
-const addButton = document.querySelector('#add-button');
-const editButton = document.querySelector('#edit-button');
-const cardList = document.querySelector('.card__list');
-const alertText = document.querySelector('.alert__text');
-const clearAllButton = document.querySelector('.clear__button');
-
 document.querySelector('form').addEventListener('submit', (e) => e.preventDefault());
 
-function showAlertText(alertMessage, alertBackgroundClass) {
-  alertText.textContent = alertMessage;
+const formInput = document.querySelector('.form__input');
+const formButton = document.querySelector('.form__button');
+const cardList = document.querySelector('.card__list');
+const clearAllButton = document.querySelector('.clear__button');
 
-  // alertText.style.visibility = 'visible';
+
+
+const todosArr = Array.from(cardList.children);
+console.log(todosArr);
+// *********************  Helper Functions *****************
+function showAlertText(alertMessage, alertBackgroundClass) {
+  const alertText = document.querySelector('.alert__text');
+  alertText.textContent = alertMessage;
   alertText.classList.add(alertBackgroundClass);
 
+  // Remove Alert Message After 1 Second
   setTimeout(() => {
-    // alertText.style.visibility = 'hidden';
     alertText.classList.remove(alertBackgroundClass);
   }, 1000);
 }
 
-function addTodoToTheList(todo) {
+function addTodo(todo) {
   // If the user didn't provide any value then show alert message and dont add any item
   if (todo.length === 0) {
     showAlertText('Please Enter Value', 'alert--red');
@@ -40,16 +42,27 @@ function addTodoToTheList(todo) {
   showAlertText('Item was added to the list', 'alert--green');
 }
 
-addButton.addEventListener('click', () => {
-  addTodoToTheList(formInput.value);
+let editedLi;
 
-  // Show Clear All Button if the list has any item
-  if (cardList.innerHTML !== '') {
-    clearAllButton.style.visibility = 'visible';
+formButton.addEventListener('click', () => {
+  if (formButton.textContent.toLocaleLowerCase() === 'add') {
+    addTodo(formInput.value);
+
+    // Show Clear All Button if the list has any item
+    if (cardList.innerHTML !== '') {
+      clearAllButton.style.visibility = 'visible';
+    }
+  }
+
+  if (formButton.textContent.toLocaleLowerCase() === 'edit') {
+    editedLi.innerHTML = `${formInput.value}<div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>`;
+
+    showAlertText('Value Changed', 'alert--green');
+
+    formInput.value = '';
+    formButton.textContent = 'add';
   }
 });
-
-let targetLi;
 
 cardList.addEventListener('click', (e) => {
   // When user clicks on delete icon
@@ -59,33 +72,24 @@ cardList.addEventListener('click', (e) => {
 
     li.remove();
     showAlertText('Item Removed', 'alert--red');
+    console.log(cardList.children.length);
+
+    if (cardList.children.length === 0) {
+      // Hide Clear ALl button
+
+      setTimeout(() => {
+        clearAllButton.style.visibility = 'hidden';
+      }, 750);
+    }
   }
 
   if (e.target.classList.contains('icon--edit')) {
     // Copy todo text to the input
+    editedLi = e.target.parentElement.parentElement;
 
-    targetLi = e.target.parentElement.parentElement;
-
-    formInput.value = targetLi.textContent.trim();
-
-    // Hide add button and show edit button
-    addButton.classList.add('hide');
-
-    editButton.classList.remove('hide');
+    formInput.value = editedLi.textContent.trim();
+    formButton.textContent = 'edit';
   }
-});
-
-editButton.addEventListener('click', () => {
-  targetLi.innerHTML = `${formInput.value}<div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>`;
-
-  showAlertText('Value Changed', 'alert--green');
-
-  formInput.value = '';
-
-  // Hide edit button and show add button
-  addButton.classList.remove('hide');
-
-  editButton.classList.add('hide');
 });
 
 clearAllButton.addEventListener('click', () => {
