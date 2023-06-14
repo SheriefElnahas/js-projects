@@ -3,6 +3,7 @@ const addButton = document.querySelector('#add-button');
 const editButton = document.querySelector('#edit-button');
 const cardList = document.querySelector('.card__list');
 const alertText = document.querySelector('.alert__text');
+const clearAllButton = document.querySelector('.clear__button');
 
 document.querySelector('form').addEventListener('submit', (e) => e.preventDefault());
 
@@ -42,12 +43,20 @@ function addTodoToTheList(todo) {
 }
 
 addButton.addEventListener('click', () => {
+  
   addTodoToTheList(formInput.value);
+
+  if(cardList.innerHTML !== '') {
+    clearAllButton.style.visibility = 'visible';
+  }
 });
 
 let targetLi;
 
 cardList.addEventListener('click', (e) => {
+  console.log(cardList.innerHTML)
+ 
+  
   // When user clicks on delete icon
   if (e.target.classList.contains('icon--delete')) {
     // Remove This Li
@@ -83,3 +92,15 @@ editButton.addEventListener('click', () => {
   addButton.classList.remove('hide');
   editButton.classList.add('hide');
 });
+
+
+clearAllButton.addEventListener('click', () => {
+  cardList.innerHTML = '';  
+
+  showAlertText('Empty List', 'alert--removed');
+
+  setTimeout(() => {
+    clearAllButton.style.visibility = 'hidden';
+  }, 1000)
+
+})
