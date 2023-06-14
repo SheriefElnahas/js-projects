@@ -2,8 +2,10 @@ const formInput = document.querySelector('.form__input');
 const addButton = document.querySelector('#add-button');
 const editButton = document.querySelector('#edit-button');
 const cardList = document.querySelector('.card__list');
+const alertText = document.querySelector('.alert__text');
 
 document.querySelector('form').addEventListener('submit', (e) => e.preventDefault());
+
 function capatalizedStr(str) {
   return str
     .split(' ')
@@ -11,20 +13,36 @@ function capatalizedStr(str) {
     .join(' ');
 }
 
-addButton.addEventListener('click', () => {
-  // Captalize the first letter in each word
-  // const capatalizedStr = formInput.value.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-  const captalizedInputValue = capatalizedStr(formInput.value);
+function showAlertText(alertMessage, alertBackgroundClass) {
+  alertText.textContent = alertMessage;
 
-  // Create LI & Add Content & Class To It
+  // alertText.style.visibility = 'visible';
+  alertText.classList.add(alertBackgroundClass);
+
+  setTimeout(() => {
+    // alertText.style.visibility = 'hidden';
+    alertText.classList.remove(alertBackgroundClass);
+  }, 1000);
+}
+
+function addTodoToTheList(todo) {
+  const capatalizedTodo = capatalizedStr(todo);
   const newTodo = document.createElement('li');
 
-  newTodo.classList.add('card__item');
-  newTodo.innerHTML = `${captalizedInputValue}<div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>`;
+  newTodo.innerHTML = `<li class="card__item"> ${capatalizedTodo} <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon  icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
+</li>`;
+
   cardList.appendChild(newTodo);
 
-  // Clear The Input
+  // Clear the input
   formInput.value = '';
+
+  // show alert text
+  showAlertText('Item was added to the list', 'alert--added');
+}
+
+addButton.addEventListener('click', () => {
+  addTodoToTheList(formInput.value);
 });
 
 let targetLi;
@@ -36,11 +54,12 @@ cardList.addEventListener('click', (e) => {
     const li = e.target.parentElement.parentElement;
 
     li.remove();
+    showAlertText('Item Removed', 'alert--removed');
   }
 
   if (e.target.classList.contains('icon--edit')) {
     // Copy todo text to the input
-    console.log(e.target.parentElement.parentElement);
+
     targetLi = e.target.parentElement.parentElement;
 
     formInput.value = targetLi.textContent.trim();
@@ -51,14 +70,16 @@ cardList.addEventListener('click', (e) => {
   }
 });
 
-editButton.addEventListener('click', (e) => {
+editButton.addEventListener('click', () => {
   const captalizedInputValue = capatalizedStr(formInput.value);
 
   targetLi.innerHTML = `${captalizedInputValue}<div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>`;
 
+  showAlertText('Value Changed', 'alert--added');
+
   formInput.value = '';
 
-      // Hide edit button and show add button
-      addButton.classList.remove('hide');
-      editButton.classList.add('hide');
+  // Hide edit button and show add button
+  addButton.classList.remove('hide');
+  editButton.classList.add('hide');
 });
