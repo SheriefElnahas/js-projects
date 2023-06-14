@@ -54,11 +54,11 @@ button {
   visibility: hidden;
   /* background:red; */
 }
-.alert--added {
+.alert--green {
   background: #83e783;
   visibility: visible;
 }
-.alert--removed {
+.alert--red {
   background:   #ffa4a4;
   visibility: visible;
 }
@@ -118,6 +118,7 @@ button {
   font-size: 1.2rem;
   border-radius: 10px;
   margin-bottom: 1rem;
+  text-transform: capitalize;
 }
 .card__item:hover {
   background: #f1f5f8;

@@ -7,13 +7,6 @@ const clearAllButton = document.querySelector('.clear__button');
 
 document.querySelector('form').addEventListener('submit', (e) => e.preventDefault());
 
-function capatalizedStr(str) {
-  return str
-    .split(' ')
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(' ');
-}
-
 function showAlertText(alertMessage, alertBackgroundClass) {
   alertText.textContent = alertMessage;
 
@@ -27,16 +20,15 @@ function showAlertText(alertMessage, alertBackgroundClass) {
 }
 
 function addTodoToTheList(todo) {
-  // If the user didn't provide any value then show alert message and dont add any item to the list
-  if(todo.length === 0) {
-    showAlertText('Please Enter Value', 'alert--removed');
+  // If the user didn't provide any value then show alert message and dont add any item
+  if (todo.length === 0) {
+    showAlertText('Please Enter Value', 'alert--red');
     return;
   }
 
-  const capatalizedTodo = capatalizedStr(todo);
   const newTodo = document.createElement('li');
 
-  newTodo.innerHTML = `<li class="card__item"> ${capatalizedTodo} <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon  icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
+  newTodo.innerHTML = `<li class="card__item"> ${todo} <div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon  icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>
 </li>`;
 
   cardList.appendChild(newTodo);
@@ -45,15 +37,14 @@ function addTodoToTheList(todo) {
   formInput.value = '';
 
   // show alert text
-  showAlertText('Item was added to the list', 'alert--added');
+  showAlertText('Item was added to the list', 'alert--green');
 }
 
 addButton.addEventListener('click', () => {
-  
   addTodoToTheList(formInput.value);
 
   // Show Clear All Button if the list has any item
-  if(cardList.innerHTML !== '') {
+  if (cardList.innerHTML !== '') {
     clearAllButton.style.visibility = 'visible';
   }
 });
@@ -61,16 +52,13 @@ addButton.addEventListener('click', () => {
 let targetLi;
 
 cardList.addEventListener('click', (e) => {
-  console.log(cardList.innerHTML)
- 
-  
   // When user clicks on delete icon
   if (e.target.classList.contains('icon--delete')) {
     // Remove This Li
     const li = e.target.parentElement.parentElement;
 
     li.remove();
-    showAlertText('Item Removed', 'alert--removed');
+    showAlertText('Item Removed', 'alert--red');
   }
 
   if (e.target.classList.contains('icon--edit')) {
@@ -82,32 +70,30 @@ cardList.addEventListener('click', (e) => {
 
     // Hide add button and show edit button
     addButton.classList.add('hide');
+
     editButton.classList.remove('hide');
   }
 });
 
 editButton.addEventListener('click', () => {
-  const captalizedInputValue = capatalizedStr(formInput.value);
+  targetLi.innerHTML = `${formInput.value}<div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>`;
 
-  targetLi.innerHTML = `${captalizedInputValue}<div class="card__icons"><i class="fa-solid fa-pen-to-square card__icon icon--edit"></i><i class="fa-solid fa-trash card__icon icon--delete"></i></div>`;
-
-  showAlertText('Value Changed', 'alert--added');
+  showAlertText('Value Changed', 'alert--green');
 
   formInput.value = '';
 
   // Hide edit button and show add button
   addButton.classList.remove('hide');
+
   editButton.classList.add('hide');
 });
 
-
 clearAllButton.addEventListener('click', () => {
-  cardList.innerHTML = '';  
+  cardList.innerHTML = '';
 
-  showAlertText('Empty List', 'alert--removed');
+  showAlertText('Empty List', 'alert--red');
 
   setTimeout(() => {
     clearAllButton.style.visibility = 'hidden';
-  }, 1000)
-
-})
+  }, 1000);
+});
