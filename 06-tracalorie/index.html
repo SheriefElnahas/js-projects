@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tracalorie</title>
-    <script src="https://kit.fontawesome.com/75016b0d3c.js" crossorigin="anonymous"></script>
+    <!-- <script src="https://kit.fontawesome.com/75016b0d3c.js" crossorigin="anonymous"></script> -->
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -38,7 +39,57 @@
           <p class="box__description">calories remaining</p>
         </div>
       </section>
+      <div class="progress__container">
+        <div class="progress"></div>
+      </div>
+
+      <section class="data">
+        <article class="data__meals">
+          <div class="data__header">
+            <h2 class="data__heading">Meals/Food Items</h2>
+            <button class="data__button">+ add meal</button>
+          </div>
+          <form class="data__form">
+            <input type="text" />
+
+            <div class="container">
+              <div class="did-floating-label-content">
+                <input class="did-floating-input" type="text" placeholder=" " />
+                <label class="did-floating-label">Enter Meal or Item</label>
+              </div>
+              <div class="did-floating-label-content">
+                <input class="did-floating-input" type="text" placeholder=" " />
+                <label class="did-floating-label">Enter Calories</label>
+              </div>
+              <button class="btn__data">Add Meal Item</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="data__workout">
+          <div class="data__header">
+            <h2 class="data__heading">Meals/Food Items</h2>
+            <button class="data__button">+ add workout</button>
+          </div>
+          <form class="data__form">
+            <input type="text" />
+
+            <div class="container">
+              <div class="did-floating-label-content">
+                <input class="did-floating-input" type="text" placeholder=" " />
+                <label class="did-floating-label">Enter Workout</label>
+              </div>
+              <div class="did-floating-label-content">
+                <input class="did-floating-input" type="text" placeholder=" " />
+                <label class="did-floating-label">Enter Calories</label>
+              </div>
+              <button class="btn__data">add workout item</button>
+            </div>
+          </form>
+        </article>
+      </section>
     </main>
+
     <script src="app.js"></script>
   </body>
 </html>
