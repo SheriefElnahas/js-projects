@@ -170,11 +170,12 @@ button {
   border-radius: 5px;
   border: 2px solid rgb(218, 218, 218);
   padding: 0.3rem 1rem 0;
-  display: grid;
-  grid-template-rows: 0;
-  transition: all 0.2s ;
+  display:none;
+  /* display: grid; */
+  /* grid-template-rows: 0;
+  transition: all 0.2s; */
 }
-
+/* 
 .data__form > div {
   overflow: hidden;
 }
@@ -185,12 +186,10 @@ button {
   grid-template-rows: 1fr;
 }
 
-
 .data__form--hide {
   border: 0px solid rgb(218, 218, 218);
   padding: 0;
-}
-
+} */
 
 .form__container {
   width: 100%;
@@ -239,7 +238,6 @@ button {
   color: #323840;
   border: 2px solid rgb(168, 168, 168);
   border-radius: 4px;
-
 }
 
 .did-floating-input:focus ~ .did-floating-label {
@@ -255,6 +253,40 @@ button {
 
 .btn--form {
   margin: -0.5rem 0 1.3rem;
+}
+
+.form__output {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px solid #c6c6c6;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  font-weight: bold;
+  display:none;
+}
+.output__value {
+  font-size: 1.2rem;
+}
+.output__btn {
+  background: hsl(0, 100%, 50%);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border: none;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.output__btn:hover {
+  background: hsl(0, 100%, 65%);
+}
+.output__calories {
+  background: var(--primary-green);
+  color: #fff;
+  padding: 0.5rem 2rem;
+  font-size: 1.8rem;
+  border-radius: 5px;
 }
 @media (max-width: 950px) {
   .container {
