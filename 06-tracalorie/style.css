@@ -170,11 +170,32 @@ button {
   border-radius: 5px;
   border: 2px solid rgb(218, 218, 218);
   padding: 0.3rem 1rem 0;
+  display: grid;
+  grid-template-rows: 0;
+  transition: all 0.2s ;
 }
+
+.data__form > div {
+  overflow: hidden;
+}
+
+.data__form--show {
+  border: 2px solid rgb(218, 218, 218);
+  padding: 0.3rem 1rem 0;
+  grid-template-rows: 1fr;
+}
+
+
+.data__form--hide {
+  border: 0px solid rgb(218, 218, 218);
+  padding: 0;
+}
+
 
 .form__container {
   width: 100%;
 }
+
 .btn--primary {
   background: var(--primary-green);
   padding: 0.8rem 1.7rem;
@@ -218,11 +239,9 @@ button {
   color: #323840;
   border: 2px solid rgb(168, 168, 168);
   border-radius: 4px;
+
 }
-.did-floating-input:focus {
-  outline: 1px solid rgb(121, 121, 121);
-  border: 1px solid transparent;
-}
+
 .did-floating-input:focus ~ .did-floating-label {
   top: -22px;
   font-size: 13px;

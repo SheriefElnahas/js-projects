@@ -55,9 +55,9 @@
           <article class="data__meals">
             <div class="data__header">
               <h2 class="data__heading">Meals</h2>
-              <button class="btn btn--primary">+ add meal</button>
+              <button id="add-meal" class="btn btn--primary">+ add meal</button>
             </div>
-            <form class="data__form">
+            <form id="meal-form" class="data__form data__form--hide">
               <div class="form__container">
                 <div class="did-floating-label-content">
                   <input class="did-floating-input" type="text" placeholder=" " />
@@ -67,6 +67,7 @@
                   <input class="did-floating-input" type="number" placeholder=" " />
                   <label class="did-floating-label">Enter Calories</label>
                 </div>
+
                 <button class="btn btn--primary btn--form">Add Meal Item</button>
               </div>
             </form>
@@ -75,19 +76,19 @@
           <article class="data__workout">
             <div class="data__header">
               <h2 class="data__heading">Workouts</h2>
-              <button class="btn btn--primary">+ add workout</button>
+              <button id="add-workout" class="btn btn--primary">+ add workout</button>
             </div>
-            <form class="data__form">
+            <form id="workout-form" class="data__form data__form--hide"  >
               <div class="form__container">
                 <div class="did-floating-label-content">
                   <input class="did-floating-input" type="text" placeholder=" " />
                   <label class="did-floating-label">Enter Workout</label>
                 </div>
                 <div class="did-floating-label-content">
-                  <input class="did-floating-input" type="text" placeholder=" " />
+                  <input class="did-floating-input" type="number" placeholder=" " />
                   <label class="did-floating-label">Enter Calories</label>
                 </div>
-                <button class="btn btn--primary btn--form">add workout item</button>
+                <button  class="btn btn--primary btn--form">add workout item</button>
               </div>
             </form>
           </article>
