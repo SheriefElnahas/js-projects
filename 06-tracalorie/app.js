@@ -9,12 +9,20 @@ const workoutForm = document.querySelector('#workout-form');
 
 addMealDataBtn.addEventListener('click', () => {
   mealForm.style.display = 'block';
-  mealOutput.style.display = 'none';
+
+  const mealOutputDivs = document.querySelectorAll('#output-meal');
+  if (mealOutputDivs) {
+    mealOutputDivs.forEach((mealOutputdiv) => (mealOutputdiv.style.display = 'none'));
+  }
 });
 
 addWorkoutDataBtn.addEventListener('click', () => {
   workoutForm.style.display = 'block';
-  workoutOutput.style.display = 'none';
+
+  const workoutOutputDivs = document.querySelectorAll('#output-workout');
+  if (workoutOutputDivs) {
+    workoutOutputDivs.forEach((workoutOutputdiv) => (workoutOutputdiv.style.display = 'none'));
+  }
 });
 
 // **************************************************
@@ -31,15 +39,26 @@ const mealCaloriesInput = document.querySelector('#meal-calories');
 const outputMealValue = document.querySelector('#output-meal-item');
 const outputMealCalories = document.querySelector('#output-meal-calories');
 
+const mealData = document.querySelector('#meal-data');
+
 addMealItemBtn.addEventListener('click', () => {
-  outputMealValue.textContent = mealItemInput.value;
-  outputMealCalories.textContent = mealCaloriesInput.value;
+  const mealOutputHTML = `<div id="output-meal" class="form__output">
+  <p id="output-meal" class="output__value">${mealItemInput.value}</p>
+  <p id="output-meal" class="output__calories">${mealCaloriesInput.value}</p>
+  <button class="output__btn">x</button>
+  </div>`;
 
   mealItemInput.value = '';
   mealCaloriesInput.value = '';
 
+  mealData.insertAdjacentHTML('beforeend', mealOutputHTML);
+
+  const mealOutputDivs = document.querySelectorAll('#output-meal');
+  if (mealOutputDivs) {
+    mealOutputDivs.forEach((mealOutputdiv) => (mealOutputdiv.style.display = 'flex'));
+  }
+
   mealForm.style.display = 'none';
-  mealOutput.style.display = 'flex';
 });
 
 const addWorkoutBtn = document.querySelector('#add-workout-item');
@@ -51,13 +70,24 @@ const workoutCaloriesInput = document.querySelector('#workout-calories');
 const outputWorkoutValue = document.querySelector('#output-workout-item');
 const outputWorkoutCalories = document.querySelector('#output-workout-calories');
 
+const workoutData = document.querySelector('#workout-data');
+
 addWorkoutBtn.addEventListener('click', () => {
-  outputWorkoutValue.textContent = workoutItemInput.value;
-  outputWorkoutCalories.textContent = workoutCaloriesInput.value;
+  const workoutOutputHTML = `<div id="output-workout" class="form__output">
+  <p id="output-workout-item" class="output__value">${workoutItemInput.value}</p>
+  <p id="output-workout-calories" class="output__calories">${workoutCaloriesInput.value}</p>
+  <button class="output__btn">x</button>
+  </div>`;
 
   workoutItemInput.value = '';
   workoutCaloriesInput.value = '';
 
+  workoutData.insertAdjacentHTML('beforeend', workoutOutputHTML);
+
+  const workoutOutputDivs = document.querySelectorAll('#output-workout');
+  if (workoutOutputDivs) {
+    workoutOutputDivs.forEach((workoutOutputdiv) => (workoutOutputdiv.style.display = 'flex'));
+  }
+
   workoutForm.style.display = 'none';
-  workoutOutput.style.display = 'flex';
 });

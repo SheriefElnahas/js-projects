@@ -264,6 +264,7 @@ button {
   border-radius: 5px;
   font-weight: bold;
   display:none;
+  margin:1rem 0;
 }
 .output__value {
   font-size: 1.2rem;
