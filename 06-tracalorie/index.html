@@ -55,9 +55,9 @@
           <article id="meal-data" class="data__meals">
             <div class="data__header">
               <h2 class="data__heading">Meals</h2>
-              <button id="add-meal" class="btn btn--primary">+ add meal</button>
+              <button id="open-meal-form-btn" class="btn btn--primary">+ add meal</button>
             </div>
-            <form id="meal-form" class="data__form ">
+            <form id="meal-form" class="data__form">
               <div class="form__container">
                 <div class="did-floating-label-content">
                   <input id="meal-item" class="did-floating-input" type="text" placeholder=" " />
@@ -68,22 +68,25 @@
                   <label for="meal-calories" class="did-floating-label">Enter Calories</label>
                 </div>
 
-                <button id="add-meal-item" class="btn btn--primary btn--form">Add Meal Item</button>
+                <button id="add-meal-item-btn" class="btn btn--primary btn--form">Add Meal Item</button>
               </div>
             </form>
-            <!-- <div id="output-meal" class="form__output">
-              <p id="output-meal-item" class="output__value">Lunch</p>
-              <p id="output-meal-calories" class="output__calories">500</p>
-              <button class="output__btn">x</button>
-            </div> -->
+            <!--  -->
+            <div id="meal-output-container">
+              <!-- <div id="output-meal" class="form__output">
+                <p class="output__value">Lunch</p>
+                <p class="output__calories">500</p>
+                <button class="output__btn">x</button>
+              </div>  -->
+            </div>
           </article>
 
-          <article  id="workout-data" class="data__workout">
+          <article id="workout-data" class="data__workout">
             <div class="data__header">
               <h2 class="data__heading">Workouts</h2>
-              <button id="add-workout" class="btn btn--primary">+ add workout</button>
+              <button id="open-workout-form-btn" class="btn btn--primary">+ add workout</button>
             </div>
-            <form id="workout-form" class="data__form ">
+            <form id="workout-form" class="data__form">
               <div class="form__container">
                 <div class="did-floating-label-content">
                   <input id="workout-item" class="did-floating-input" type="text" placeholder=" " />
@@ -93,14 +96,16 @@
                   <input id="workout-calories" class="did-floating-input" type="number" placeholder=" " />
                   <label for="workout-calories" class="did-floating-label">Enter Calories</label>
                 </div>
-                <button id="add-workout-item" class="btn btn--primary btn--form">add workout item</button>
+                <button id="add-workout-item-btn" class="btn btn--primary btn--form">add workout item</button>
               </div>
             </form>
-            <!-- <div id="output-workout" class="form__output">
+            <div id="workout-output-container">
+              <!-- <div id="output-workout" class="form__output">
               <p id="output-workout-item" class="output__value">Push up</p>
               <p id="output-workout-calories" class="output__calories">50</p>
               <button class="output__btn">x</button>
             </div> -->
+            </div>
           </article>
         </div>
       </section>

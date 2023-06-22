@@ -1,93 +1,89 @@
 // ********************************************
 // ##   Add Meal & Add Workout Form Toggle   ##
 // ********************************************
-const addMealDataBtn = document.querySelector('#add-meal');
-const mealForm = document.querySelector('#meal-form');
+const opeanMealFormBtn = document.getElementById('open-meal-form-btn');
+const mealForm = document.getElementById('meal-form');
+const mealOutputContainer = document.getElementById('meal-output-container');
 
-const addWorkoutDataBtn = document.querySelector('#add-workout');
-const workoutForm = document.querySelector('#workout-form');
-
-addMealDataBtn.addEventListener('click', () => {
+opeanMealFormBtn.addEventListener('click', () => {
+  // 1- Show Meal Form
   mealForm.style.display = 'block';
 
-  const mealOutputDivs = document.querySelectorAll('#output-meal');
-  if (mealOutputDivs) {
-    mealOutputDivs.forEach((mealOutputdiv) => (mealOutputdiv.style.display = 'none'));
-  }
+  // 2- Hide Meal Output Data
+  mealOutputContainer.style.display = 'none';
 });
 
-addWorkoutDataBtn.addEventListener('click', () => {
+const openWorkoutFormBtn = document.getElementById('open-workout-form-btn');
+const workoutForm = document.getElementById('workout-form');
+const workoutOutputContainer = document.getElementById('workout-output-container');
+
+openWorkoutFormBtn.addEventListener('click', () => {
+  // 1- Show Workout Form
   workoutForm.style.display = 'block';
 
-  const workoutOutputDivs = document.querySelectorAll('#output-workout');
-  if (workoutOutputDivs) {
-    workoutOutputDivs.forEach((workoutOutputdiv) => (workoutOutputdiv.style.display = 'none'));
-  }
+  // 2- Hide Workout Output Data
+  workoutOutputContainer.style.display = 'none';
 });
 
 // **************************************************
-// ##   Add Meal Item & Add Workout Items Buttons  ##
+// ##   Add Meal Item & Add Workout Item  ##
 // **************************************************
-document.querySelectorAll('form').forEach((form) => form.addEventListener('submit', (e) => e.preventDefault()));
 
-const addMealItemBtn = document.querySelector('#add-meal-item');
-const mealOutput = document.querySelector('#output-meal');
+const dataForms = document.querySelectorAll('.data__form');
 
-const mealItemInput = document.querySelector('#meal-item');
-const mealCaloriesInput = document.querySelector('#meal-calories');
+dataForms.forEach((dataForm) => {
+  dataForm.addEventListener('click', (e) => {
+    e.preventDefault();
 
-const outputMealValue = document.querySelector('#output-meal-item');
-const outputMealCalories = document.querySelector('#output-meal-calories');
+    // If user clicked on Add Meal Item Btn
+    if (e.target.id === 'add-meal-item-btn') {
+      // Extract Meal Item Input & Meal Calories Input Data
+      const mealItemInput = document.getElementById('meal-item');
+      const mealCaloriesInput = document.getElementById('meal-calories');
 
-const mealData = document.querySelector('#meal-data');
+      // Call Add And pass the meal input and meal calories input
+      addMealOutput(mealItemInput, mealCaloriesInput);
+    }
 
-addMealItemBtn.addEventListener('click', () => {
+    if (e.target.id === 'add-workout-item-btn') {
+      const workoutItemInput = document.getElementById('workout-item');
+      const workoutCaloriesInput = document.getElementById('workout-calories');
+
+      addWorkoutOutput(workoutItemInput, workoutCaloriesInput);
+    }
+  });
+});
+
+function addMealOutput(mealItem, mealCalories) {
+  // Built The HTML Data From The Item & Calories Input Values
   const mealOutputHTML = `<div id="output-meal" class="form__output">
-  <p id="output-meal" class="output__value">${mealItemInput.value}</p>
-  <p id="output-meal" class="output__calories">${mealCaloriesInput.value}</p>
-  <button class="output__btn">x</button>
+    <p class="output__value">${mealItem.value}</p>
+    <p class="output__calories">${mealCalories.value}</p>
+    <button class="output__btn">x</button>
   </div>`;
 
-  mealItemInput.value = '';
-  mealCaloriesInput.value = '';
+  // Clear The Inputs After We Get The Value
+  mealItem.value = mealCalories.value = '';
 
-  mealData.insertAdjacentHTML('beforeend', mealOutputHTML);
+  // Insert The Meal HTMl Data Into Meal COntainer
+  mealOutputContainer.insertAdjacentHTML('beforeend', mealOutputHTML);
 
-  const mealOutputDivs = document.querySelectorAll('#output-meal');
-  if (mealOutputDivs) {
-    mealOutputDivs.forEach((mealOutputdiv) => (mealOutputdiv.style.display = 'flex'));
-  }
-
+  // Show Meal Output Data & Hide Meal Form
+  mealOutputContainer.style.display = 'block';
   mealForm.style.display = 'none';
-});
+}
 
-const addWorkoutBtn = document.querySelector('#add-workout-item');
-const workoutOutput = document.querySelector('#output-workout');
-
-const workoutItemInput = document.querySelector('#workout-item');
-const workoutCaloriesInput = document.querySelector('#workout-calories');
-
-const outputWorkoutValue = document.querySelector('#output-workout-item');
-const outputWorkoutCalories = document.querySelector('#output-workout-calories');
-
-const workoutData = document.querySelector('#workout-data');
-
-addWorkoutBtn.addEventListener('click', () => {
+function addWorkoutOutput(workoutItem, workoutCalories) {
   const workoutOutputHTML = `<div id="output-workout" class="form__output">
-  <p id="output-workout-item" class="output__value">${workoutItemInput.value}</p>
-  <p id="output-workout-calories" class="output__calories">${workoutCaloriesInput.value}</p>
+  <p class="output__value">${workoutItem.value}</p>
+  <p class="output__calories">${workoutCalories.value}</p>
   <button class="output__btn">x</button>
   </div>`;
 
-  workoutItemInput.value = '';
-  workoutCaloriesInput.value = '';
+  workoutItem.value = workoutCalories.value = '';
 
-  workoutData.insertAdjacentHTML('beforeend', workoutOutputHTML);
+  workoutOutputContainer.insertAdjacentHTML('beforeend', workoutOutputHTML);
 
-  const workoutOutputDivs = document.querySelectorAll('#output-workout');
-  if (workoutOutputDivs) {
-    workoutOutputDivs.forEach((workoutOutputdiv) => (workoutOutputdiv.style.display = 'flex'));
-  }
-
+  workoutOutputContainer.style.display = 'block';
   workoutForm.style.display = 'none';
-});
+}
