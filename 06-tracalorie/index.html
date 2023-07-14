@@ -9,20 +9,39 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="modal__container">
+      <dialog class="modal">
+        <div class="modal__header">
+          <h2 class="modal__heading">Set Daily Limit</h2>
+          <button class="modal__x__btn">X</button>
+        </div>
+        <form class="modal__form">
+          <div class="modal__field floating__field">
+            <input id="calories-limit" class="floating__input" type="number" name="calories-limit" />
+            <label for="calories-limit" class="floating__label">Daily Limit Calories</label>
+          </div>
+          <p class="alert__message hide">Daily limit calories cannot be empty!</p>
+          <button id="close-modal" class="btn btn--primary">Update</button>
+        </form>
+      
+      </dialog>
+    </div>
+
     <main>
       <header class="header">
         <div class="container header--container">
           <h1 class="header__logo"><i class="fa-solid fa-utensils"></i> Tracalorie</h1>
           <ul class="header__list">
-            <button class="btn btn--default">set daily limit</button>
+            <button id="open-modal" class="btn btn--default">set daily limit</button>
             <button class="btn btn--default">reset day</button>
           </ul>
         </div>
       </header>
+
       <section class="hero">
         <div class="container hero--container">
           <div class="hero__box box--black">
-            <h2 class="box__value">2000</h2>
+            <h2 id="daily-calories" class="box__value">2000</h2>
             <p class="box__description">daily calorie limit</p>
           </div>
           <div class="hero__box box--green">
@@ -59,13 +78,13 @@
             </div>
             <form id="meal-form" class="data__form">
               <div class="form__container">
-                <div class="did-floating-label-content">
-                  <input id="meal-item" class="did-floating-input" type="text" placeholder=" " />
-                  <label for="meal-item" class="did-floating-label" name="meal-item">Enter Meal or Item</label>
+                <div class="floating__field">
+                  <input id="meal-item" class="floating__input" type="text" placeholder=" " />
+                  <label for="meal-item" class="floating__label" name="meal-item">Enter Meal or Item</label>
                 </div>
-                <div class="did-floating-label-content">
-                  <input id="meal-calories" class="did-floating-input" type="number" placeholder=" " name="meal-calories" />
-                  <label for="meal-calories" class="did-floating-label">Enter Calories</label>
+                <div class="floating__field">
+                  <input id="meal-calories" class="floating__input" type="number" placeholder=" " name="meal-calories" />
+                  <label for="meal-calories" class="floating__label">Enter Calories</label>
                 </div>
 
                 <button id="add-meal-item-btn" class="btn btn--primary btn--form">Add Meal Item</button>
@@ -88,13 +107,13 @@
             </div>
             <form id="workout-form" class="data__form">
               <div class="form__container">
-                <div class="did-floating-label-content">
-                  <input id="workout-item" class="did-floating-input" type="text" placeholder=" " />
-                  <label for="workout-item" class="did-floating-label">Enter Workout</label>
+                <div class="floating__field">
+                  <input id="workout-item" class="floating__input" type="text" placeholder=" " />
+                  <label for="workout-item" class="floating__label">Enter Workout</label>
                 </div>
-                <div class="did-floating-label-content">
-                  <input id="workout-calories" class="did-floating-input" type="number" placeholder=" " />
-                  <label for="workout-calories" class="did-floating-label">Enter Calories</label>
+                <div class="floating__field">
+                  <input id="workout-calories" class="floating__input" type="number" placeholder=" " />
+                  <label for="workout-calories" class="floating__label">Enter Calories</label>
                 </div>
                 <button id="add-workout-item-btn" class="btn btn--primary btn--form">add workout item</button>
               </div>

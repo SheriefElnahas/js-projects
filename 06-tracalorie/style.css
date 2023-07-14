@@ -40,6 +40,22 @@ button {
   padding: 0.5rem 1rem;
 }
 
+.alert__message {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  background: red;
+  padding: 0.5rem;
+  width: fit-content;
+  border-radius: 3px;
+  margin: 0 0 1rem 1rem;
+  color: #fff;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+.hide {
+  display: none;
+}
+
 /* Header */
 .header--container {
   background: var(--primary-green);
@@ -70,6 +86,69 @@ button {
 .btn--default:hover {
   background: #fff;
   color: var(--primary-green);
+}
+/* Modal */
+
+.modal {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 450px;
+  border: none;
+  border-radius: 10px;
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; */
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid gray;
+  padding-bottom: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+.modal__x__btn {
+  background: transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__field.floating__field {
+  width: 95%;
+  padding-left: 1rem;
+  margin: 45px 0 20px;
+}
+.modal__field .floating__label {
+  left: 20px;
+  top: 8px;
+}
+
+.modal__field .floating__input:focus ~ .floating__label {
+  top: -22px;
+  left: 12px;
+  font-size: 13px;
+}
+.modal__field .floating__input:not(:placeholder-shown) ~ .floating__label {
+  top: -22px;
+  left: 12px;
+  font-size: 13px;
+}
+
+.modal .btn--primary {
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+dialog::backdrop {
+  background: rgba(77, 77, 77, 0.5);
 }
 
 /* Hero */
@@ -170,7 +249,7 @@ button {
   border-radius: 5px;
   border: 2px solid rgb(218, 218, 218);
   padding: 0.3rem 1rem 0;
-  display:none;
+  display: none;
   /* display: grid; */
   /* grid-template-rows: 0;
   transition: all 0.2s; */
@@ -208,12 +287,13 @@ button {
   border: 2px solid var(--primary-green);
 }
 
-.did-floating-label-content {
+.floating__field {
   position: relative;
   margin: 35px 0 30px;
+  width: 100%;
 }
 
-.did-floating-label {
+.floating__label {
   color: #8c8c8c;
   font-size: 14px;
   font-weight: bold;
@@ -223,11 +303,9 @@ button {
   top: 10px;
   padding: 0 5px;
   transition: 0.2s ease all;
-  -moz-transition: 0.2s ease all;
-  -webkit-transition: 0.2s ease all;
 }
 
-.did-floating-input {
+.floating__input {
   font-size: 14px;
   font-weight: bold;
   display: block;
@@ -240,12 +318,12 @@ button {
   border-radius: 4px;
 }
 
-.did-floating-input:focus ~ .did-floating-label {
+.floating__input:focus ~ .floating__label {
   top: -22px;
   font-size: 13px;
   left: 0;
 }
-.did-floating-input:not(:placeholder-shown) ~ .did-floating-label {
+.floating__input:not(:placeholder-shown) ~ .floating__label {
   top: -22px;
   left: 0;
   font-size: 13px;
@@ -264,7 +342,7 @@ button {
   border-radius: 5px;
   font-weight: bold;
 
-  margin:1rem 0;
+  margin: 1rem 0;
 }
 .output__value {
   font-size: 1.2rem;

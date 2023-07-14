@@ -87,3 +87,45 @@ function addWorkoutOutput(workoutItem, workoutCalories) {
   workoutOutputContainer.style.display = 'block';
   workoutForm.style.display = 'none';
 }
+
+// Set Daily Limit Button Logic
+const setDailyLimitBtn = document.getElementById('set-limit-btn');
+
+// setDailyLimitBtn.addEventListener('click', () => {
+//   // 1-
+// })
+// Modal
+const modal = document.querySelector('dialog');
+const openModalButton = document.querySelector('#open-modal');
+const closeModalButton = document.querySelector('#close-modal');
+const modalXButton = document.querySelector('.modal__x__btn');
+const caloriesLimitInput = document.querySelector('#calories-limit');
+const dailyCalories = document.querySelector('#daily-calories');
+const modalForm = document.querySelector('.modal__form');
+const alertMessage = document.querySelector('.alert__message');
+
+modalForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+});
+
+modalXButton.addEventListener('click', () => {
+  modal.close();
+});
+
+openModalButton.addEventListener('click', () => {
+  modal.showModal();
+});
+
+closeModalButton.addEventListener('click', () => {
+  const caloriesLimit = caloriesLimitInput.value;
+  if (caloriesLimit.length === 0) {
+    alertMessage.classList.remove('hide');
+    return;
+  }
+
+  dailyCalories.textContent = caloriesLimit;
+  caloriesLimitInput.value = '';
+  alertMessage.classList.add('hide');
+
+  modal.close();
+});
