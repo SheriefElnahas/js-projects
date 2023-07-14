@@ -129,3 +129,10 @@ closeModalButton.addEventListener('click', () => {
 
   modal.close();
 });
+
+
+// Reset Day 
+const resetCaloriesBtn = document.querySelector('#reset-calories');
+resetCaloriesBtn.addEventListener('click', () => {
+  dailyCalories.textContent = 2000;
+})
