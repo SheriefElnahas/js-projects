@@ -30,6 +30,34 @@ openWorkoutFormBtn.addEventListener('click', () => {
 // **************************************************
 
 const dataForms = document.querySelectorAll('.data__form');
+const gainAndLossElement = document.querySelector('#gain-and-loss');
+const caloriesConsumedElement = document.querySelector('#calories-consumed');
+const caloriesRemaningElement = document.querySelector('#calroies-remnaing');
+const caloriesBurnedElement = document.querySelector('#calories-burned');
+
+
+function calculateGainedCalories(caloriesGained) {
+    caloriesConsumedElement.textContent = caloriesGained;
+    caloriesRemaningElement.textContent = caloriesRemaningElement.textContent - caloriesGained;
+    gainAndLossElement.textContent = caloriesGained;
+
+    calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent)
+}
+
+const dailyCalories = document.querySelector('#daily-calories');
+
+
+function calculateProgressBar(dailyLimit, caloriesConsumed) {
+  const progressBar = document.querySelector('.progress');
+  console.log(dailyLimit, caloriesConsumed);
+  const progressBarWidth =  (+caloriesConsumed  / +dailyLimit) * 100;
+  
+
+
+  progressBar.style.width =`${progressBarWidth}%` ;
+  progressBar.style.background = '#2f992f';
+
+}
 
 dataForms.forEach((dataForm) => {
   dataForm.addEventListener('click', (e) => {
@@ -62,6 +90,11 @@ function addMealOutput(mealItem, mealCalories) {
     <button class="output__btn">x</button>
   </div>`;
 
+  
+  // calculate gain calories
+  calculateGainedCalories(mealCalories.value);
+
+
   // Clear The Inputs After We Get The Value
   mealItem.value = mealCalories.value = '';
 
@@ -70,6 +103,7 @@ function addMealOutput(mealItem, mealCalories) {
 
   // Show Meal Output Data & Hide Meal Form
   mealOutputContainer.style.display = 'block';
+
   mealForm.style.display = 'none';
 }
 
@@ -80,7 +114,12 @@ function addWorkoutOutput(workoutItem, workoutCalories) {
   <button class="output__btn">x</button>
   </div>`;
 
+
+
+
   workoutItem.value = workoutCalories.value = '';
+
+
 
   workoutOutputContainer.insertAdjacentHTML('beforeend', workoutOutputHTML);
 
@@ -100,7 +139,7 @@ const openModalButton = document.querySelector('#open-modal');
 const closeModalButton = document.querySelector('#close-modal');
 const modalXButton = document.querySelector('.modal__x__btn');
 const caloriesLimitInput = document.querySelector('#calories-limit');
-const dailyCalories = document.querySelector('#daily-calories');
+
 const modalForm = document.querySelector('.modal__form');
 const alertMessage = document.querySelector('.alert__message');
 
@@ -124,15 +163,16 @@ closeModalButton.addEventListener('click', () => {
   }
 
   dailyCalories.textContent = caloriesLimit;
+  caloriesRemaningElement.textContent = caloriesLimit;
+
   caloriesLimitInput.value = '';
   alertMessage.classList.add('hide');
 
   modal.close();
 });
 
-
-// Reset Day 
+// Reset Day
 const resetCaloriesBtn = document.querySelector('#reset-calories');
 resetCaloriesBtn.addEventListener('click', () => {
   dailyCalories.textContent = 2000;
-})
+});

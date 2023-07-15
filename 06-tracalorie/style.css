@@ -212,13 +212,27 @@ dialog::backdrop {
   font-size: 1.1rem;
 }
 
-/* Progress */
+/* Progress Bar */
+.progress__container {
+  margin-inline: auto;
+  background: var(--light-gray);
+  margin: 1rem 8.5rem;
+  border-radius: 15px;
+  padding: 0.2rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25), 0 1px rgba(255, 255, 255, 0.08);
+}
+
 .progress {
   padding: 0.8rem;
-  background: var(--light-gray);
-  margin-inline: auto;
   border-radius: 15px;
-  width: calc(100% - 0.8rem);
+  width: 0;
+
+  background:transparent;
+  transition-duration: 2s;
+  transition-property: width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Data */
@@ -249,11 +263,25 @@ dialog::backdrop {
   border-radius: 5px;
   border: 2px solid rgb(218, 218, 218);
   padding: 0.3rem 1rem 0;
+  transition: transform 1s linear;
   display: none;
+
   /* display: grid; */
   /* grid-template-rows: 0;
   transition: all 0.2s; */
 }
+
+@keyframes fadeOutUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
 /* 
 .data__form > div {
   overflow: hidden;
@@ -371,6 +399,9 @@ dialog::backdrop {
   .container {
     padding: 1rem 4rem;
   }
+  .progress__container {
+    margin: 1rem 4.5rem;
+  }
   .data {
     margin-top: 2rem;
   }
@@ -383,6 +414,9 @@ dialog::backdrop {
 @media (max-width: 800px) {
   .container {
     padding: 1rem 2rem;
+  }
+  .progress__container {
+    margin: 1rem 2.5rem;
   }
   .header {
     padding: 0;
