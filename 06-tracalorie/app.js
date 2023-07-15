@@ -35,34 +35,49 @@ const caloriesConsumedElement = document.querySelector('#calories-consumed');
 const caloriesRemaningElement = document.querySelector('#calroies-remnaing');
 const caloriesBurnedElement = document.querySelector('#calories-burned');
 
-
 function calculateGainedCalories(caloriesGained) {
-    caloriesConsumedElement.textContent = caloriesGained;
-    caloriesRemaningElement.textContent = caloriesRemaningElement.textContent - caloriesGained;
-    gainAndLossElement.textContent = caloriesGained;
+  caloriesConsumedElement.textContent = +caloriesConsumedElement.textContent + +caloriesGained;
+  caloriesRemaningElement.textContent = caloriesRemaningElement.textContent - caloriesGained;
+  gainAndLossElement.textContent = +gainAndLossElement.textContent + +caloriesGained;
 
-    calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent)
+  calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent);
+}
+
+function calculateBurnedCalories(caloriesBurned) {
+  caloriesBurnedElement.textContent = +caloriesBurnedElement.textContent + +caloriesBurned;
+
+  caloriesRemaningElement.textContent = +caloriesRemaningElement.textContent + +caloriesBurned;
+
+  calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent, caloriesBurned);
+  gainAndLossElement.textContent = +gainAndLossElement.textContent - +caloriesBurned;
 }
 
 const dailyCalories = document.querySelector('#daily-calories');
 
-
-function calculateProgressBar(dailyLimit, caloriesConsumed) {
+function calculateProgressBar(dailyLimit, caloriesConsumed, caloriesBurned) {
   const progressBar = document.querySelector('.progress');
-  console.log(dailyLimit, caloriesConsumed);
-  const progressBarWidth =  (+caloriesConsumed  / +dailyLimit) * 100;
-  
-  console.log(progressBarWidth);
 
-  if(progressBarWidth > 100) {
-    progressBar.style.width =`100%` ;
+  if (caloriesBurned) {
+    const widthToExtract = +gainAndLossElement.textContent - +caloriesBurned;
+
+    const progressBarWidth = widthToExtract * 0.1;
+
+    progressBar.style.width = `${progressBarWidth}%`;
+    progressBar.style.background = '#2f992f';
+
+    return;
+  }
+
+  const progressBarWidth = (+caloriesConsumed / +dailyLimit) * 100;
+
+  if (progressBarWidth > 100) {
+    progressBar.style.width = `100%`;
     progressBar.style.background = 'red';
     return;
   }
-  
-  progressBar.style.width =`${progressBarWidth}%` ;
-  progressBar.style.background = '#2f992f';
 
+  progressBar.style.width = `${progressBarWidth}%`;
+  progressBar.style.background = '#2f992f';
 }
 
 dataForms.forEach((dataForm) => {
@@ -96,10 +111,8 @@ function addMealOutput(mealItem, mealCalories) {
     <button class="output__btn">x</button>
   </div>`;
 
-  
   // calculate gain calories
   calculateGainedCalories(mealCalories.value);
-
 
   // Clear The Inputs After We Get The Value
   mealItem.value = mealCalories.value = '';
@@ -120,12 +133,9 @@ function addWorkoutOutput(workoutItem, workoutCalories) {
   <button class="output__btn">x</button>
   </div>`;
 
-
-
+  calculateBurnedCalories(workoutCalories.value);
 
   workoutItem.value = workoutCalories.value = '';
-
-
 
   workoutOutputContainer.insertAdjacentHTML('beforeend', workoutOutputHTML);
 
@@ -180,5 +190,5 @@ closeModalButton.addEventListener('click', () => {
 // Reset Day
 const resetCaloriesBtn = document.querySelector('#reset-calories');
 resetCaloriesBtn.addEventListener('click', () => {
-  dailyCalories.textContent = 2000;
+  dailyCalories.textContent = 1800;
 });
