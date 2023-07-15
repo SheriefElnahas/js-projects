@@ -52,8 +52,14 @@ function calculateProgressBar(dailyLimit, caloriesConsumed) {
   console.log(dailyLimit, caloriesConsumed);
   const progressBarWidth =  (+caloriesConsumed  / +dailyLimit) * 100;
   
+  console.log(progressBarWidth);
 
-
+  if(progressBarWidth > 100) {
+    progressBar.style.width =`100%` ;
+    progressBar.style.background = 'red';
+    return;
+  }
+  
   progressBar.style.width =`${progressBarWidth}%` ;
   progressBar.style.background = '#2f992f';
 
