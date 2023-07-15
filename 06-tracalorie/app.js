@@ -34,6 +34,7 @@ const gainAndLossElement = document.querySelector('#gain-and-loss');
 const caloriesConsumedElement = document.querySelector('#calories-consumed');
 const caloriesRemaningElement = document.querySelector('#calroies-remnaing');
 const caloriesBurnedElement = document.querySelector('#calories-burned');
+const dailyCalories = document.querySelector('#daily-calories');
 
 function calculateGainedCalories(caloriesGained) {
   caloriesConsumedElement.textContent = +caloriesConsumedElement.textContent + +caloriesGained;
@@ -41,6 +42,10 @@ function calculateGainedCalories(caloriesGained) {
   gainAndLossElement.textContent = +gainAndLossElement.textContent + +caloriesGained;
 
   calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent);
+
+  if (caloriesRemaningElement.textContent < 0 ) {
+    caloriesRemaningElement.parentElement.style.background = 'red';
+  }
 }
 
 function calculateBurnedCalories(caloriesBurned) {
@@ -50,9 +55,11 @@ function calculateBurnedCalories(caloriesBurned) {
 
   calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent, caloriesBurned);
   gainAndLossElement.textContent = +gainAndLossElement.textContent - +caloriesBurned;
-}
 
-const dailyCalories = document.querySelector('#daily-calories');
+  if (caloriesRemaningElement.textContent >= 0 ) {
+    caloriesRemaningElement.parentElement.style.background = '#f0e8e8';
+  }
+}
 
 function calculateProgressBar(dailyLimit, caloriesConsumed, caloriesBurned) {
   const progressBar = document.querySelector('.progress');
@@ -61,9 +68,11 @@ function calculateProgressBar(dailyLimit, caloriesConsumed, caloriesBurned) {
     const widthToExtract = +gainAndLossElement.textContent - +caloriesBurned;
 
     const progressBarWidth = widthToExtract * 0.1;
-
-    progressBar.style.width = `${progressBarWidth}%`;
-    progressBar.style.background = '#2f992f';
+    console.log(progressBarWidth);
+    progressBar.style.width = `${progressBarWidth > 100 ? 100 : progressBarWidth}%`;
+    if (progressBarWidth <= 100) {
+      progressBar.style.background = '#2f992f';
+    }
 
     return;
   }
