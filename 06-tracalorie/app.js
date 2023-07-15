@@ -1,6 +1,60 @@
-// ********************************************
-// ##   Add Meal & Add Workout Form Toggle   ##
-// ********************************************
+// ************************************
+// ##   Set Daily Limit Modal Start  ##
+// ************************************
+const setDailyLimitModalElement = document.querySelector('dialog');
+const setDailyLimitBtn = document.querySelector('#open-modal');
+const updateDailyLimitBtn = document.querySelector('#close-modal');
+
+const dailyCaloriesElement = document.querySelector('#daily-calories');
+const caloriesRemaningElement = document.querySelector('#calroies-remnaing');
+
+const modalForm = document.querySelector('.modal__form');
+modalForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+});
+
+setDailyLimitBtn.addEventListener('click', () => {
+  setDailyLimitModalElement.showModal();
+});
+
+setDailyLimitModalElement.addEventListener('click', (e) => {
+  console.log(e.target);
+  if (e.target.textContent === 'X') {
+    setDailyLimitModalElement.close();
+  }
+
+  if (e.target.textContent === 'Update') {
+    updateDailyCaloriesLimit();
+  }
+});
+
+function updateDailyCaloriesLimit() {
+  const caloriesLimitInput = document.querySelector('#calories-limit');
+  const alertMessage = document.querySelector('.alert__message');
+
+  // If user didn't provide any value, then show alert message and return from the function
+  if (caloriesLimitInput.value.length === 0) {
+    alertMessage.classList.remove('hide');
+    return;
+  }
+
+  // Else - Update daily calories and calories remaning.
+  dailyCaloriesElement.textContent = caloriesRemaningElement.textContent = caloriesLimitInput.value;
+
+  // Empty out input value and hide alert message
+  caloriesLimitInput.value = '';
+  alertMessage.classList.add('hide');
+
+  setDailyLimitModalElement.close();
+}
+
+// ************************************
+// ##   Set Daily Limit Modal End    ##
+// ************************************
+
+// **************************************************
+// ##   Add Meal & Add Workout Form Toggle Start   ##
+// **************************************************
 const opeanMealFormBtn = document.getElementById('open-meal-form-btn');
 const mealForm = document.getElementById('meal-form');
 const mealOutputContainer = document.getElementById('meal-output-container');
@@ -26,24 +80,27 @@ openWorkoutFormBtn.addEventListener('click', () => {
 });
 
 // **************************************************
+// ##   Add Meal & Add Workout Form Toggle End   ##
+// **************************************************
+
+// **************************************************
 // ##   Add Meal Item & Add Workout Item  ##
 // **************************************************
 
 const dataForms = document.querySelectorAll('.data__form');
 const gainAndLossElement = document.querySelector('#gain-and-loss');
 const caloriesConsumedElement = document.querySelector('#calories-consumed');
-const caloriesRemaningElement = document.querySelector('#calroies-remnaing');
+
 const caloriesBurnedElement = document.querySelector('#calories-burned');
-const dailyCalories = document.querySelector('#daily-calories');
 
 function calculateGainedCalories(caloriesGained) {
   caloriesConsumedElement.textContent = +caloriesConsumedElement.textContent + +caloriesGained;
   caloriesRemaningElement.textContent = caloriesRemaningElement.textContent - caloriesGained;
   gainAndLossElement.textContent = +gainAndLossElement.textContent + +caloriesGained;
 
-  calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent);
+  calculateProgressBar(dailyCaloriesElement.textContent, caloriesConsumedElement.textContent);
 
-  if (caloriesRemaningElement.textContent < 0 ) {
+  if (caloriesRemaningElement.textContent < 0) {
     caloriesRemaningElement.parentElement.style.background = 'red';
   }
 }
@@ -56,7 +113,7 @@ function calculateBurnedCalories(caloriesBurned) {
   calculateProgressBar(dailyCalories.textContent, caloriesConsumedElement.textContent, caloriesBurned);
   gainAndLossElement.textContent = +gainAndLossElement.textContent - +caloriesBurned;
 
-  if (caloriesRemaningElement.textContent >= 0 ) {
+  if (caloriesRemaningElement.textContent >= 0) {
     caloriesRemaningElement.parentElement.style.background = '#f0e8e8';
   }
 }
@@ -152,52 +209,10 @@ function addWorkoutOutput(workoutItem, workoutCalories) {
   workoutForm.style.display = 'none';
 }
 
-// Set Daily Limit Button Logic
-const setDailyLimitBtn = document.getElementById('set-limit-btn');
-
-// setDailyLimitBtn.addEventListener('click', () => {
-//   // 1-
-// })
-// Modal
-const modal = document.querySelector('dialog');
-const openModalButton = document.querySelector('#open-modal');
-const closeModalButton = document.querySelector('#close-modal');
-const modalXButton = document.querySelector('.modal__x__btn');
-const caloriesLimitInput = document.querySelector('#calories-limit');
-
-const modalForm = document.querySelector('.modal__form');
-const alertMessage = document.querySelector('.alert__message');
-
-modalForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-});
-
-modalXButton.addEventListener('click', () => {
-  modal.close();
-});
-
-openModalButton.addEventListener('click', () => {
-  modal.showModal();
-});
-
-closeModalButton.addEventListener('click', () => {
-  const caloriesLimit = caloriesLimitInput.value;
-  if (caloriesLimit.length === 0) {
-    alertMessage.classList.remove('hide');
-    return;
-  }
-
-  dailyCalories.textContent = caloriesLimit;
-  caloriesRemaningElement.textContent = caloriesLimit;
-
-  caloriesLimitInput.value = '';
-  alertMessage.classList.add('hide');
-
-  modal.close();
-});
-
 // Reset Day
 const resetCaloriesBtn = document.querySelector('#reset-calories');
 resetCaloriesBtn.addEventListener('click', () => {
   dailyCalories.textContent = 1800;
 });
+
+// 219
